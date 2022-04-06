@@ -14,14 +14,9 @@
 </head>
 
 <body>
-    {{-- Navbar --}}
     @include('layouts.navbar')
 
-    {{-- Content --}}
-    <div class="container">
-        @yield('content')
-    </div>
-
+    @yield('content')
 </body>
 
 </html>
