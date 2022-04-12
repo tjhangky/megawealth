@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request ;
 
@@ -22,14 +22,14 @@ class RegisterController extends Controller
         ]);
         
         // remove confirm-password
-        $newMember = Arr::except($validated, ['confirm-password']);
+        $newUser = Arr::except($validated, ['confirm-password']);
         
         // hash password
-        $newMember['password'] = bcrypt($newMember['password']);
+        $newUser['password'] = bcrypt($newUser['password']);
 
         // push ke db
-        Member::create($newMember);
-        
+        User::create($newUser);
         return redirect('/')->with('status', 'Register Success');
+
     }
 }
