@@ -62,6 +62,22 @@ class DatabaseSeeder extends Seeder
             'image' => '',
         ]);
 
+        Office::create([
+            'name' => 'Office 5',
+            'address' => 'Jl. Raya Kedungwringin No.5',
+            'contact_name' => 'Jeremy',
+            'contact_phone' => '0812-3456-7890',
+            'image' => '',
+        ]);
+
+        Office::create([
+            'name' => 'Office 6',
+            'address' => 'Jl. Raya Kedungwringin No.6',
+            'contact_name' => 'Jeremy',
+            'contact_phone' => '0812-3456-7890',
+            'image' => '',
+        ]);
+
 
         // Properties
         Property::create([

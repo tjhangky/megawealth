@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Office;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -21,4 +22,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 // content
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/about-us', function () {
+    $offices = Office::paginate(5);
+    return view('about-us', compact('offices'));
 });
