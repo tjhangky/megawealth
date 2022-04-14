@@ -12,11 +12,16 @@
                     {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                     <div class="card-body">
                         <h5 class="card-title">{{ $office->name }}</h5>
-                        <p class="card-text">{{ $office->address }}</p>
+                        <p class="card-text ">{{ $office->address }}</p>
                         <p class="card-text">{{ $office->contact_name }} : {{ $office->contact_phone }}</p>
                     </div>
                 </div>
             @endforeach
         </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            {{ $offices->links() }}
+        </div>
+
     </div>
 @endsection
