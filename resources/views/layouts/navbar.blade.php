@@ -10,8 +10,20 @@
             <a class="nav-item nav-link" href="/about-us">About Us</a>
             <a class="nav-item nav-link" href="/buy">Buy</a>
             <a class="nav-item nav-link" href="/rent">Rent</a>
-            <a class="nav-item nav-link" href="/login">Login</a>
-            <a class="nav-item nav-link" href="/register">Register</a>
+            @guest
+                <a class="nav-item nav-link" href="/login">Login</a>
+                <a class="nav-item nav-link" href="/register">Register</a>
+            @endguest
+
+            @auth
+                <a class="nav-item nav-link" href="/cart">Cart</a>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                </form>
+            @endauth
+
+
         </div>
     </div>
 </nav>
