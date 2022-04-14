@@ -16,7 +16,7 @@ class RegisterController extends Controller
         // validasi
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email:dns|unique:members',
+            'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8',
             'confirm-password' => 'required|same:password'
         ]);
