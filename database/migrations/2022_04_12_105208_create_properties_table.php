@@ -15,6 +15,12 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->integer('price');
+            $table->string('address');
+            $table->string('property_type');
+            $table->string('sale_type');
+            $table->string('status');
+            $table->string('image'); // ini blm tau
             $table->timestamps();
         });
     }
