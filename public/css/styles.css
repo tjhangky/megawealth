@@ -1,0 +1,8 @@
+.card-tag {
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    padding: 1px 5px;
+    margin-right: 5px;
+    font-size: 0.8em;
+}

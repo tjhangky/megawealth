@@ -29,14 +29,16 @@
                             </h5>
 
                             <p class="card-text">{{ $cart->property->address }}</p>
-                            <p class="card-text">{{ $cart->property->property_type }}</p>
-                            <p class="card-text">{{ $cart->created_at->format('Y-m-d') }}</p>
+                            <div class="d-flex">
+                                <p class="card-tag">{{ $cart->property->property_type }}</p>
+                                <p class="card-tag">{{ $cart->created_at->format('Y-m-d') }}</p>
+                            </div>
 
                             <form action="/cart/{{ $cart->id }}" method="POST">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure to delete from your cart?')">Cancel</button>
+                                    onclick="return confirm('Are you sure to delete this property from your cart?')">Cancel</button>
                             </form>
                         </div>
                     </div>
