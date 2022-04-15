@@ -47,8 +47,13 @@
             </div>
 
             <div class="d-flex justify-content-center mt-5">
-                {{-- {{ $carts->links() }} --}}
-                <button type="button" class="btn btn-primary">Checkout</button>
+                {{ $carts->links() }}
+                <form action="/checkout/{{ $cart->user->id }}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-primary"
+                        onclick="return confirm('Are you sure you want to checkout?')">Checkout</button>
+                </form>
             </div>
         @endif
     </div>

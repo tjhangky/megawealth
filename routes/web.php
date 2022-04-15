@@ -39,5 +39,6 @@ Route::get('/properties/rent', [PropertyController::class, 'rent']);
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
 Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart/{id}', [CartController::class, 'destroy']);
+Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
 
 // content for admin

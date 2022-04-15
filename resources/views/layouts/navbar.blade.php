@@ -13,6 +13,7 @@
                 <a class="nav-item nav-link" href="/about-us">About Us</a>
                 <a class="nav-item nav-link" href="/properties/buy">Buy</a>
                 <a class="nav-item nav-link" href="/properties/rent">Rent</a>
+
                 @guest
                     <a class="nav-item nav-link" href="/login">Login</a>
                     <a class="nav-item nav-link" href="/register">Register</a>

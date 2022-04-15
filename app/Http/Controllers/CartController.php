@@ -63,4 +63,10 @@ class CartController extends Controller
 
         return redirect('/cart')->with('status', 'Property has been removed from cart!');
     }
+
+    public function checkout($id) {
+        Cart::where('user_id', $id)->delete();
+
+        return redirect('/')->with('status', 'Checkout Successful!');
+    }
 }
