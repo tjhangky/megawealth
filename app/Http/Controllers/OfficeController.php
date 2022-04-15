@@ -10,6 +10,6 @@ class OfficeController extends Controller
     public function index()
     {
         $offices = Office::paginate(5);
-        return view('about-us', ['offices' => $offices, 'active' => 'about-us']);
+        return view('about-us', compact('offices'));
     }
 }

@@ -15,16 +15,20 @@
                             <h5 class="card-title">${{ $property->price }}</h5>
                         @endif
 
-                        <p class="card-text ">{{ $property->address }}</p>
+                        <p class="card-text">{{ $property->address }}</p>
                         <p class="card-text">{{ $property->property_type }}</p>
-                        <p class="card-text">{{ $property->sale_type }}</p>
+                        @if ($property->sale_type == 'Rent')
+                            <button type="button" class="btn btn-primary">Rent</button>
+                        @else
+                            <button type="button" class="btn btn-primary">Buy</button>
+                        @endif
                     </div>
                 </div>
             @endforeach
         </div>
 
         <div class="d-flex justify-content-center mt-5">
-            {{-- {{ $properties->links() }} --}}
+            {{ $properties->links() }}
         </div>
 
     </div>

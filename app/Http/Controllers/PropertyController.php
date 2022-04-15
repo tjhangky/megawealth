@@ -14,9 +14,9 @@ class PropertyController extends Controller
                 ->where('property_type', 'like', '%' . request('search') . '%')
                 ->orWhere('address', 'like', '%' . request('search') . '%')
                 ->orWhere('sale_type', 'like', '%' . request('search') . '%')
-                ->get();
+                ->paginate(4);
         } else {
-            $properties = Property::all();
+            $properties = Property::paginate(4);
         }
     
         // $properties->get();
