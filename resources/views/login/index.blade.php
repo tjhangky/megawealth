@@ -2,14 +2,15 @@
 
 @section('content')
     <div class="container mt-5">
+
+
+        <h3 class="text-center">Login</h3>
         {{-- status message --}}
         @if (session()->has('status'))
             <div class="alert alert-danger">
                 {{ session('status') }}
             </div>
         @endif
-
-        <h3 class="text-center">Login</h3>
         <form action="/login" method="POST">
             @csrf
             <div class="form-group">
@@ -23,8 +24,11 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password"
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
                     placeholder="Your password must be at least 8 characters">
+                @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-check">

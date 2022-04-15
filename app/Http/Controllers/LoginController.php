@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email:dns',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         if (Auth::attempt($credentials, $request->remember)) {
@@ -25,7 +25,7 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with('status', 'Login Failed');
+        return back()->with('status', 'Login Failed! Please check your credentials.');
         
     }
 
@@ -35,7 +35,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
   
 }

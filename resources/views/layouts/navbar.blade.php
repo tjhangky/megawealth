@@ -17,11 +17,17 @@
 
             @auth
                 <a class="nav-item nav-link" href="/cart">Cart</a>
+
+                {{-- FOR ADMIN
+                <a class="nav-item nav-link" href="/buy">Manage Company</a>
+                <a class="nav-item nav-link" href="/rent">Manage Real Estate</a> --}}
+
                 <form action="/logout" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-link nav-link">Logout</button>
                 </form>
             @endauth
+
 
 
         </div>
