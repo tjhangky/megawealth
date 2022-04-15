@@ -20,6 +20,16 @@ class PropertyController extends Controller
         }
     
         // $properties->get();
-        return view('properties', compact('properties'));
+        return view('properties.index', compact('properties'));
+    }
+
+    public function buy() {
+        $properties = Property::where('sale_type', '=', 'Sale')->paginate(4);
+        return view('properties.buy', compact('properties'));
+    }
+
+    public function rent() {
+        $properties = Property::where('sale_type', '=', 'Rent')->paginate(4);
+        return view('properties.rent', compact('properties'));
     }
 }

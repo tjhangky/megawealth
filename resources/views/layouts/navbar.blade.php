@@ -8,8 +8,8 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="/">Home</span></a>
             <a class="nav-item nav-link" href="/about-us">About Us</a>
-            <a class="nav-item nav-link" href="/buy">Buy</a>
-            <a class="nav-item nav-link" href="/rent">Rent</a>
+            <a class="nav-item nav-link" href="/properties/buy">Buy</a>
+            <a class="nav-item nav-link" href="/properties/rent">Rent</a>
             @guest
                 <a class="nav-item nav-link" href="/login">Login</a>
                 <a class="nav-item nav-link" href="/register">Register</a>

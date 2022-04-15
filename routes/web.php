@@ -33,5 +33,7 @@ Route::get('/', function () {
 
 Route::get('/about-us', [OfficeController::class, 'index']);
 Route::get('/properties', [PropertyController::class, 'index']);
+Route::get('/properties/buy', [PropertyController::class, 'buy']);
+Route::get('/properties/rent', [PropertyController::class, 'rent']);
 
 // content for admin
