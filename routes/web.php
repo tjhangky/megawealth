@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Office;
-use App\Models\Property;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +35,7 @@ Route::get('/about-us', [OfficeController::class, 'index']);
 Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/buy', [PropertyController::class, 'buy']);
 Route::get('/properties/rent', [PropertyController::class, 'rent']);
+
+Route::get('/cart', [CartController::class, 'index']);
 
 // content for admin
