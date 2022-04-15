@@ -9,6 +9,16 @@ class Property extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'property_type',
+        'price',
+        'address',
+        'property_type',
+        'sale_type',
+        'status',
+        'price',
+    ];
+
     public function cart() {
         return $this->hasMany(Cart::class);
     }

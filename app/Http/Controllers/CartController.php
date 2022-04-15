@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PropertyController;
 
 class CartController extends Controller
 {
@@ -31,6 +32,12 @@ class CartController extends Controller
             'property_id' => $request->property_id,
         ];
         Cart::create($cart);
+
+        // change property status to 'Cart'
+        $property_controller = new PropertyController;
+        $status = 'Cart';
+        $property_controller->update($status, $request->property_id);
+
         return redirect('/cart')->with('status', 'Property added to cart!');
     }
 
@@ -42,7 +49,18 @@ class CartController extends Controller
      */
     public function destroy($id)
     {   
-        Cart::find($id)->delete();
+        $cart = Cart::find($id);
+        $property_id = $cart->property_id;
+        $cart->delete();
+
+        // change property status to 'Open' if no longer exist in cart
+        $property_exist = Cart::where('property_id', $property_id)->exists();
+        if (!$property_exist) {
+            $status = 'Open';
+            $property_controller = new PropertyController;
+            $property_controller->update($status, $property_id);
+        }
+
         return redirect('/cart')->with('status', 'Property has been removed from cart!');
     }
 }

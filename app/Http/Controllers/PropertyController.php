@@ -19,17 +19,22 @@ class PropertyController extends Controller
             $properties = Property::paginate(4);
         }
     
-        // $properties->get();
         return view('properties.index', compact('properties'));
     }
 
     public function buy() {
-        $properties = Property::where('sale_type', '=', 'Sale')->paginate(4);
+        $properties = Property::where('sale_type', 'like', 'sale')->paginate(4);
         return view('properties.buy', compact('properties'));
     }
 
     public function rent() {
-        $properties = Property::where('sale_type', '=', 'Rent')->paginate(4);
+        $properties = Property::where('sale_type', 'like', 'rent')->paginate(4);
         return view('properties.rent', compact('properties'));
+    }
+
+    // update status to 'Cart / Open / Completed'
+    public function update($status, $id) {
+        Property::find($id)->update(['status' => $status]);
+        return redirect('/properties');
     }
 }

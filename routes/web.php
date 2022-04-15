@@ -22,7 +22,7 @@ use App\Http\Controllers\CartController;
 // auth
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -36,7 +36,7 @@ Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/buy', [PropertyController::class, 'buy']);
 Route::get('/properties/rent', [PropertyController::class, 'rent']);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
 Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart/{id}', [CartController::class, 'destroy']);
 

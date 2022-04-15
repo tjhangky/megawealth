@@ -1,5 +1,9 @@
 @extends('properties.layouts.main')
 
 @section('info')
-    <p>Showing Search Results for "{{ request('search') }}"</p>
+    @if (request('search') == '')
+        <p>Showing All Properties</p>
+    @else
+        <p>Showing Search Results for "{{ request('search') }}"</p>
+    @endif
 @endsection

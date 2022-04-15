@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <p>Your Cart</p>
+        <h4>Your Cart</h4>
 
         @if ($carts->isEmpty())
             <div class="d-flex justify-content-center">
