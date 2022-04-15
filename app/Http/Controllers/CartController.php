@@ -14,18 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('user_id', auth()->user()->id)->get();
+        $carts = Cart::where('user_id', auth()->user()->id)->paginate(4);
         return view('cart.index', compact('carts'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -36,41 +26,11 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
+        $cart = new Cart();
+        $cart->user_id = auth()->user()->id;
+        $cart->property_id = $request->property_id;
+        $cart->save();
+        return redirect('/cart');
     }
 
     /**
@@ -79,8 +39,9 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(Request $request)
     {
-        //
+        Cart::where('user_id', auth()->user()->id)->where('property_id', $request->property_id)->first()->delete();
+        return redirect('/cart');
     }
 }

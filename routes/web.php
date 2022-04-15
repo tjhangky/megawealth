@@ -37,5 +37,7 @@ Route::get('/properties/buy', [PropertyController::class, 'buy']);
 Route::get('/properties/rent', [PropertyController::class, 'rent']);
 
 Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart', [CartController::class, 'store']);
+Route::delete('/cart', [CartController::class, 'destroy']);
 
 // content for admin

@@ -17,11 +17,18 @@
 
                         <p class="card-text">{{ $property->address }}</p>
                         <p class="card-text">{{ $property->property_type }}</p>
-                        @if ($property->sale_type == 'Rent')
-                            <button type="button" class="btn btn-primary">Rent</button>
-                        @else
-                            <button type="button" class="btn btn-primary">Buy</button>
-                        @endif
+
+                        <form action="/cart" method="POST">
+                            @csrf
+                            <input type="hidden" name="property_id" value="{{ $property->id }}">
+                            <button type="submit" class="btn btn-primary">
+                                @if ($property->sale_type == 'Rent')
+                                    Rent
+                                @else
+                                    Buy
+                                @endif
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endforeach
