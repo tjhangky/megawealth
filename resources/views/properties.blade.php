@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <p>Showing Search Results for {{ request('search') }}</p>
+        <p>Showing Search Results for "{{ request('search') }}"</p>
 
         <div class="d-flex">
             @foreach ($properties as $property)
