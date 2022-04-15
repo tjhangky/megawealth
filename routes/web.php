@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Office;
+use App\Models\Property;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -33,4 +34,19 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     $offices = Office::paginate(5);
     return view('about-us', compact('offices'));
+});
+
+Route::get('/properties', function () {
+    if (request('search')) {
+        $properties = Property::query()
+            ->where('property_type', 'like', '%' . request('search') . '%')
+            ->orWhere('address', 'like', '%' . request('search') . '%')
+            ->orWhere('sale_type', 'like', '%' . request('search') . '%')
+            ->get();
+    } else {
+        $properties = Property::all();
+    }
+
+    // $properties->get();
+    return view('properties', compact('properties'));
 });
