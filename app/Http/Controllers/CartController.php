@@ -14,7 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('user_id', auth()->user()->id)->paginate(4);
+        $carts = Cart::where('user_id', auth()->user()->id)->latest()->paginate(4);
         return view('cart.index', compact('carts'));
     }
 
@@ -26,11 +26,12 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = new Cart();
-        $cart->user_id = auth()->user()->id;
-        $cart->property_id = $request->property_id;
-        $cart->save();
-        return redirect('/cart');
+        $cart = [
+            'user_id' => auth()->user()->id,
+            'property_id' => $request->property_id,
+        ];
+        Cart::create($cart);
+        return redirect('/cart')->with('status', 'Property added to cart!');
     }
 
     /**
@@ -39,9 +40,9 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
-    {
-        Cart::where('user_id', auth()->user()->id)->where('property_id', $request->property_id)->first()->delete();
-        return redirect('/cart');
+    public function destroy($id)
+    {   
+        Cart::find($id)->delete();
+        return redirect('/cart')->with('status', 'Property has been removed from cart!');
     }
 }

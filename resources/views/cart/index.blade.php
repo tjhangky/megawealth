@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <p>Your Cart</p>
 
         @if ($carts->isEmpty())
@@ -26,11 +32,11 @@
                             <p class="card-text">{{ $cart->property->property_type }}</p>
                             <p class="card-text">{{ $cart->created_at->format('Y-m-d') }}</p>
 
-                            <form action="/cart" method="POST">
-                                @method('DELETE')
+                            <form action="/cart/{{ $cart->id }}" method="POST">
+                                @method('delete')
                                 @csrf
-                                <input type="hidden" name="property_id" value="{{ $cart->property->id }}">
-                                <button type="submit" class="btn btn-danger">Cancel</button>
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure to delete from your cart?')">Cancel</button>
                             </form>
                         </div>
                     </div>
