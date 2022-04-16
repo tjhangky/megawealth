@@ -10,9 +10,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</span></a>
-                <a class="nav-item nav-link" href="/about-us">About Us</a>
-                <a class="nav-item nav-link" href="/properties/buy">Buy</a>
-                <a class="nav-item nav-link" href="/properties/rent">Rent</a>
+
+                @cannot('admin')
+                    <a class="nav-item nav-link" href="/about-us">About Us</a>
+                    <a class="nav-item nav-link" href="/properties/buy">Buy</a>
+                    <a class="nav-item nav-link" href="/properties/rent">Rent</a>
+                @endcannot
 
                 @guest
                     <a class="nav-item nav-link" href="/login">Login</a>
@@ -20,11 +23,15 @@
                 @endguest
 
                 @auth
-                    <a class="nav-item nav-link" href="/cart">Cart</a>
+                    @cannot('admin')
+                        <a class="nav-item nav-link" href="/cart">Cart</a>
+                    @endcannot
 
-                    {{-- FOR ADMIN --}}
-                    <a class="nav-item nav-link" href="/manage-company">Manage Company</a>
-                    <a class="nav-item nav-link" href="/manage-property">Manage Real Estate</a>
+                    {{-- for admin --}}
+                    @can('admin')
+                        <a class="nav-item nav-link" href="/manage-company">Manage Company</a>
+                        <a class="nav-item nav-link" href="/manage-property">Manage Real Estate</a>
+                    @endcan
 
                     <form action="/logout" method="POST">
                         @csrf

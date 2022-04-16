@@ -13,7 +13,7 @@ class ManagePropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $properties = Property::latest()->paginate(4);
         return view('admin.property.index', compact('properties'));
     }
