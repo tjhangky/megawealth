@@ -3,6 +3,10 @@
 @section('content')
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-6">
+
+            <img src="https://source.unsplash.com/1600x900/?bulding" style="width: 100%">
+        </div>
+        <div class="col-md-6">
             <form action="/manage-property/{{ $property->id }}" method="POST">
                 @method('put')
                 @csrf

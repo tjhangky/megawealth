@@ -72,10 +72,11 @@ class ManagePropertyController extends Controller
     {
         $validated = $request->validate([
             'sale_type' => 'required|in:Sale,Rent',
-            'property_type' => 'required|in:House,Apartment',
+            'property_type' => 'required|in:House,Apartment', # nanti diganti pake tabel
             'price' => 'required',
             'address' => 'required',
         ]);
+
         $validated['status'] = $property->status;
         $property->update($validated);
 
@@ -91,7 +92,9 @@ class ManagePropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        //
+        $property->delete();
+
+        return redirect()->back()->with('status', 'Property deleted successfully');
     }
 
     public function finish(Property $property)
