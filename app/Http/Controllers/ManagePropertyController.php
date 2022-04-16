@@ -41,8 +41,14 @@ class ManagePropertyController extends Controller
             'property_type' => 'required|in:House,Apartment',
             'price' => 'required',
             'address' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|file|max:10240',
         ]);
 
+        if($request->file('image')) {
+            $validated['image'] = $request->file('image')->store('property-images');
+        }
+
+    
         Property::create($validated);
 
         return redirect('/manage-property')->with('status', 'Property added successfully');

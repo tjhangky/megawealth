@@ -35,9 +35,27 @@
 
                     <form action="/logout" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-link nav-item nav-link">Logout</button>
+                        <button type="submit" class="btn btn-outline-dark">Logout</button>
                     </form>
                 @endauth
+
+
+                {{-- display role biar mudah cek --}}
+                @guest
+                    <span class="nav-link text-warning">ROLE : GUEST</span>
+                @endguest
+
+                @auth
+                    @cannot('admin')
+                        <span class="nav-link text-warning">ROLE : MEMBER</span>
+                    @endcannot
+
+                @endauth
+
+                @can('admin')
+                    <span class="nav-link text-warning">ROLE : ADMIN</span>
+                @endcan
+
             </div>
         </div>
     </div>

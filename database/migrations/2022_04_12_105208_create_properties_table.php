@@ -19,7 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('address');
             $table->string('property_type');
             $table->string('sale_type');
-            $table->string('status');
+            $table->string('status')->default('Open');
             $table->string('image');
             $table->timestamps();
         });
