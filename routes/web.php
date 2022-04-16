@@ -46,18 +46,18 @@ Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
 
 // ADMIN
 // manage company
-Route::get('/manage-company', [ManageOfficeController::class, 'index'])->middleware('auth');
-Route::get('/manage-company/create', [ManageOfficeController::class, 'create'])->middleware('auth');
+Route::get('/manage-company', [ManageOfficeController::class, 'index'])->middleware('admin');
+Route::get('/manage-company/create', [ManageOfficeController::class, 'create'])->middleware('admin');
 Route::post('/manage-company', [ManageOfficeController::class, 'store']);
-Route::get('/manage-company/{office}/edit', [ManageOfficeController::class, 'edit'])->middleware('auth');
+Route::get('/manage-company/{office}/edit', [ManageOfficeController::class, 'edit'])->middleware('admin');
 Route::put('/manage-company/{office}', [ManageOfficeController::class, 'update']);
 Route::delete('/manage-company/{office}', [ManageOfficeController::class, 'destroy']);
 
 // manage properties
-Route::get('/manage-property', [ManagePropertyController::class, 'index'])->middleware('auth');
-Route::get('/manage-property/create', [ManagePropertyController::class, 'create'])->middleware('auth');
+Route::get('/manage-property', [ManagePropertyController::class, 'index'])->middleware('admin');
+Route::get('/manage-property/create', [ManagePropertyController::class, 'create'])->middleware('admin');
 Route::post('/manage-property', [ManagePropertyController::class, 'store']);
-Route::get('/manage-property/{property}/edit', [ManagePropertyController::class, 'edit'])->middleware('auth');
+Route::get('/manage-property/{property}/edit', [ManagePropertyController::class, 'edit'])->middleware('admin');
 Route::put('/manage-property/{property}', [ManagePropertyController::class, 'update']);
 Route::delete('/manage-property/{property}', [ManagePropertyController::class, 'destroy']);
 // Route::resource('/manage-property', ManagePropertyController::class)->middleware('auth');
