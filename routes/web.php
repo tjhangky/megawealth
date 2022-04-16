@@ -7,6 +7,7 @@ use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ManageOfficeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,9 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy']);
 Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
 
 // content for admin
+Route::get('/manage-company', [ManageOfficeController::class, 'index'])->middleware('auth');
+Route::get('/manage-company/create', [ManageOfficeController::class, 'create'])->middleware('auth');
+Route::post('/manage-company', [ManageOfficeController::class, 'store']);
+Route::get('/manage-company/{office}/edit', [ManageOfficeController::class, 'edit'])->middleware('auth');
+Route::put('/manage-company/{office}', [ManageOfficeController::class, 'update']);
+Route::delete('/manage-company/{id}', [ManageOfficeController::class, 'destroy']);

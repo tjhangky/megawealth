@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                    placeholder="Enter Your Name" value={{ old('name') }}>
+                    placeholder="Enter Your Name" value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                    placeholder="Enter Your Email" value={{ old('email') }}>
+                    placeholder="Enter Your Email" value="{{ old('email') }}">
                 @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
