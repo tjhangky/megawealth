@@ -41,7 +41,12 @@ class ManageOfficeController extends Controller
             'address' => 'required',
             'contact_name' => 'required',
             'contact_phone' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|file|max:10240',
         ]);
+
+        if($request->file('image')) {
+            $validated['image'] = $request->file('image')->store('office-images');
+        }
 
         Office::create($validated);
 

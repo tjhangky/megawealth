@@ -17,6 +17,7 @@ class Property extends Model
         'sale_type',
         'status',
         'price',
+        'image'
     ];
 
     public function cart() {

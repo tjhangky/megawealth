@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-6">
-            <form action="/manage-company" method="POST">
+            <form action="/manage-company" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="name">Office Name</label>
@@ -40,10 +40,14 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                {{-- <div class="form-group">
-                    <label for="file">Upload Image</label>
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                </div> --}}
+
+                <div class="form-group">
+                    <label for="image">Upload Image</label>
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <button type="submit" class="btn btn-primary mt-3">Insert</button>
             </form>

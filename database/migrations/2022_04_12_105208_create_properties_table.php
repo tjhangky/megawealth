@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_type');
             $table->string('sale_type');
             $table->string('status');
-            $table->string('image'); // ini blm tau
+            $table->string('image');
             $table->timestamps();
         });
     }

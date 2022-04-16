@@ -11,7 +11,14 @@
         <div class="d-flex">
             @foreach ($offices as $office)
                 <div class="card mx-1" style="width: 18rem;">
-                    <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding" alt="Card image cap">
+
+                    @if ($office->image)
+                        <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
+                    @else
+                        {{-- NANTI INI DI DELETE --}}
+                        <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding" alt="Card image cap">
+                    @endif
+
                     <div class="card-body">
                         <h5 class="card-title">{{ $office->name }}</h5>
                         <p class="card-text ">{{ $office->address }}</p>
