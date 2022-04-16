@@ -36,7 +36,17 @@ class ManagePropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'sale_type' => 'required|in:Sale,Rent',
+            'property_type' => 'required|in:House,Apartment',
+            'price' => 'required',
+            'address' => 'required',
+        ]);
+
+        Property::create($validated);
+
+        return redirect('/manage-property')->with('status', 'Property added successfully');
+
     }
 
 
@@ -48,7 +58,7 @@ class ManagePropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        //
+        return view('admin.property.edit', compact('property'));
     }
 
     /**
@@ -60,7 +70,17 @@ class ManagePropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-        //
+        $validated = $request->validate([
+            'sale_type' => 'required|in:Sale,Rent',
+            'property_type' => 'required|in:House,Apartment',
+            'price' => 'required',
+            'address' => 'required',
+        ]);
+        $validated['status'] = $property->status;
+        $property->update($validated);
+
+        return redirect('/manage-property')->with('status', 'Property updated successfully');
+
     }
 
     /**

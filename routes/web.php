@@ -54,5 +54,11 @@ Route::put('/manage-company/{office}', [ManageOfficeController::class, 'update']
 Route::delete('/manage-company/{office}', [ManageOfficeController::class, 'destroy']);
 
 // manage properties
-Route::resource('/manage-property', ManagePropertyController::class)->middleware('auth');
-Route::put('/manage-property/{property}/finish', [ManagePropertyController::class, 'finish']);
+Route::get('/manage-property', [ManagePropertyController::class, 'index'])->middleware('auth');
+Route::get('/manage-property/create', [ManagePropertyController::class, 'create'])->middleware('auth');
+Route::post('/manage-property', [ManagePropertyController::class, 'store']);
+Route::get('/manage-property/{property}/edit', [ManagePropertyController::class, 'edit'])->middleware('auth');
+Route::put('/manage-property/{property}', [ManagePropertyController::class, 'update']);
+Route::delete('/manage-property/{property}', [ManagePropertyController::class, 'destroy']);
+// Route::resource('/manage-property', ManagePropertyController::class)->middleware('auth');
+// Route::put('/manage-property/{property}/finish', [ManagePropertyController::class, 'finish']);
