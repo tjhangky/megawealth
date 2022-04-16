@@ -47,9 +47,8 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cart $cart)
     {   
-        $cart = Cart::find($id);
         $property_id = $cart->property_id;
         $cart->delete();
 

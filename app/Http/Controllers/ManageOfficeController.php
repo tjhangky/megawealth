@@ -15,7 +15,7 @@ class ManageOfficeController extends Controller
     public function index()
     {
         $offices = Office::paginate(4);
-        return view('admin.manage-company', compact('offices'));
+        return view('admin.office.index', compact('offices'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ManageOfficeController extends Controller
      */
     public function create()
     {
-        return view('admin.add-office');
+        return view('admin.office.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ManageOfficeController extends Controller
 
         Office::create($validated);
 
-        return redirect('manage-company')->with('status', 'Office added successfully');
+        return redirect('/manage-company')->with('status', 'Office added successfully');
 
     }
 
@@ -57,7 +57,7 @@ class ManageOfficeController extends Controller
      */
     public function edit(Office $office)
     {   
-        return view('admin.edit-office', compact('office'));
+        return view('admin.office.edit', compact('office'));
     }
 
     /**
@@ -78,7 +78,7 @@ class ManageOfficeController extends Controller
 
         $office->update($validated);
 
-        return redirect('manage-company')->with('status', 'Office updated successfully');
+        return redirect('/manage-company')->with('status', 'Office updated successfully');
     }
 
 
@@ -90,6 +90,8 @@ class ManageOfficeController extends Controller
      */
     public function destroy(Office $office)
     {
-        //
+        $office->delete();
+
+        return redirect()->back()->with('status', 'Office deleted successfully');
     }
 }

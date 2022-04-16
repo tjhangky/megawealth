@@ -48,7 +48,7 @@
 
             <div class="d-flex justify-content-center mt-5">
                 {{ $carts->links() }}
-                <form action="/checkout/{{ $cart->user->id }}" method="POST">
+                <form action="/checkout/{{ $carts->first()->user->id }}" method="POST">
                     @method('delete')
                     @csrf
                     <button type="submit" class="btn btn-primary"
