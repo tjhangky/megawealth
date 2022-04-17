@@ -15,6 +15,12 @@ class CartController extends Controller
      */
     public function index()
     {
+
+        // MASIH MANUAL TAR GANTI
+        if (auth()->user()->is_admin == true) {
+            abort(403, 'Unauthorized access.');
+        }
+
         $carts = Cart::where('user_id', auth()->user()->id)->latest()->paginate(4);
         return view('cart.index', compact('carts'));
     }
@@ -27,6 +33,11 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        // MASIH MANUAL TAR GANTI
+        if (auth()->user()->is_admin == true) {
+            return redirect()->back()->with('status', 'Admin cannot make a transaction.');
+            // abort(403, 'Unauthorized access.');
+        }
         
         $cart = [
             'user_id' => auth()->user()->id,

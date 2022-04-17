@@ -23,11 +23,20 @@ class PropertyController extends Controller
     }
 
     public function buy() {
+        // MASIH MANUAL TAR GANTI
+        if (auth()->user()->is_admin == true) {
+            abort(403, 'Unauthorized access.');
+        }
         $properties = Property::where('sale_type', 'like', 'sale')->paginate(4);
         return view('properties.buy', compact('properties'));
     }
 
     public function rent() {
+        // MASIH MANUAL TAR GANTI
+        if (auth()->user()->is_admin == true) {
+            abort(403, 'Unauthorized access.');
+        }
+        
         $properties = Property::where('sale_type', 'like', 'rent')->paginate(4);
         return view('properties.rent', compact('properties'));
     }

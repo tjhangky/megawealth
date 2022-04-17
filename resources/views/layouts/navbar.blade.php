@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav ms-auto">
                 <a class="nav-item nav-link" href="/">Home</span></a>
 
                 @cannot('admin')
@@ -35,7 +35,7 @@
 
                     <form action="/logout" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-outline-dark">Logout</button>
+                        <button type="submit" class="btn btn-link">Logout</button>
                     </form>
                 @endauth
 

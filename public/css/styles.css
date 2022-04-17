@@ -22,3 +22,8 @@
 .tag-status {
     background-color: green;
 }
+
+.btn-link {
+    color: #8abefe;
+    text-decoration: none;
+}

@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         @yield('info')
 
         @if ($properties->isEmpty())
@@ -12,7 +19,15 @@
             <div class="d-flex">
                 @foreach ($properties as $property)
                     <div class="card mx-1" style="width: 18rem;">
-                        <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding" alt="Card image cap">
+
+                        @if ($property->image)
+                            <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
+                        @else
+                            {{-- NANTI INI DI DELETE --}}
+                            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding"
+                                alt="Card image cap">
+                        @endif
+
                         <div class="card-body">
                             @if ($property->sale_type == 'Rent')
                                 <h5 class="card-title">${{ $property->price }} / month</h5>
