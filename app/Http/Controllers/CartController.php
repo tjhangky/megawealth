@@ -27,6 +27,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        
         $cart = [
             'user_id' => auth()->user()->id,
             'property_id' => $request->property_id,

@@ -28,8 +28,7 @@
                             <form action="/cart" method="POST">
                                 @csrf
                                 <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                <button type="submit" class="btn btn-primary"
-                                    onclick="return confirm('Add property to cart?')">
+                                <button type="submit" class="btn btn-primary">
                                     @if ($property->sale_type == 'Rent')
                                         Rent
                                     @else

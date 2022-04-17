@@ -39,7 +39,7 @@ Route::get('/properties/buy', [PropertyController::class, 'buy']);
 Route::get('/properties/rent', [PropertyController::class, 'rent']);
 
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
-Route::post('/cart', [CartController::class, 'store']);
+Route::post('/cart', [CartController::class, 'store'])->middleware('auth');
 Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
 
