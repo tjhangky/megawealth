@@ -36,13 +36,10 @@
                             @endif
 
                             <p class="card-text">{{ $property->address }}</p>
-                            <div class="d-flex">
-                                <span class="badge bg-primary">{{ $property->property_type }}</span>
-                                <span class="badge bg-danger">{{ $property->sale_type }}</span>
-                                <span class="badge bg-success">{{ $property->status }}</span>
-                                {{-- <p class="card-tag tag-property-type">{{ $property->property_type }}</p>
-                                <p class="card-tag tag-sale-type">{{ $property->sale_type }}</p>
-                                <p class="card-tag tag-status">{{ $property->status }}</p> --}}
+                            <div class="d-flex mb-2">
+                                <span class="badge bg-primary me-1">{{ $property->property_type }}</span>
+                                <span class="badge bg-danger me-1">{{ $property->sale_type }}</span>
+                                <span class="badge bg-warning me-1">{{ $property->status }}</span>
                             </div>
 
                             <div class="d-flex justify-content-around">

@@ -24,7 +24,7 @@ class PropertyController extends Controller
 
     public function buy() {
         // MASIH MANUAL TAR GANTI
-        if (auth()->user()->is_admin == true) {
+        if (auth()->user() && auth()->user()->is_admin == true) {
             abort(403, 'Unauthorized access.');
         }
         $properties = Property::where('sale_type', 'like', 'sale')->paginate(4);
@@ -33,7 +33,7 @@ class PropertyController extends Controller
 
     public function rent() {
         // MASIH MANUAL TAR GANTI
-        if (auth()->user()->is_admin == true) {
+        if (auth()->user() && auth()->user()->is_admin == true) {
             abort(403, 'Unauthorized access.');
         }
         
