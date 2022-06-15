@@ -37,7 +37,8 @@
 
                             <p class="card-text">{{ $property->address }}</p>
                             <div class="d-flex">
-                                <p class="card-tag">{{ $property->property_type }}</p>
+                                <span class="badge bg-primary">{{ $property->property_type }}</span>
+                                {{-- <p class="card-tag">{{ $property->property_type }}</p> --}}
                             </div>
 
                             <form action="/cart" method="POST">
