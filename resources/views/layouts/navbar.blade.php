@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between sticky-top mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between sticky-top mb-5">
     <div class="container">
 
 
