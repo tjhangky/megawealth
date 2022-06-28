@@ -24,8 +24,7 @@
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
                         @else
                             {{-- NANTI INI DI DELETE --}}
-                            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding"
-                                alt="Card image cap">
+                            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
                         @endif
 
                         <div class="card-body">

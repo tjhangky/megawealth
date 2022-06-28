@@ -50,6 +50,7 @@ class TransactionController extends Controller
 
             // loop setiap detail transaksi
             foreach ($transactiondetails as $transactiondetail) {
+                // ambil objek property
                 $property = Property::find($transactiondetail->property_id);
                 $newData = [
                     'transaction_date' => $transaction->created_at->toDateString(),

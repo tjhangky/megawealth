@@ -30,6 +30,5 @@ class RegisterController extends Controller
         // push ke db
         User::create($newUser);
         return redirect('/')->with('status', 'Register Success');
-
     }
 }

@@ -23,9 +23,9 @@ use App\Http\Controllers\ManagePropertyController;
 
 // AUTHENTICATION
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // GUEST & MEMBER
@@ -34,14 +34,23 @@ Route::get('/', function () {
 });
 
 Route::get('/about-us', [OfficeController::class, 'index']);
-Route::get('/properties', [PropertyController::class, 'index']);
-Route::get('/properties/buy', [PropertyController::class, 'buy']);
-Route::get('/properties/rent', [PropertyController::class, 'rent']);
 
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
-Route::post('/cart', [CartController::class, 'store'])->middleware('auth');
-Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
-Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
+Route::prefix('properties')->group(function() {
+    Route::get('/', [PropertyController::class, 'index']);
+    Route::get('/buy', [PropertyController::class, 'buy']);
+    Route::get('/rent', [PropertyController::class, 'rent']);
+});
+
+Route::prefix('cart')->middleware('auth')->group(function() {
+    Route::get('/', [CartController::class, 'index']);
+    Route::post('/', [CartController::class, 'store']);
+    Route::delete('/{cart}', [CartController::class, 'destroy']);
+    Route::delete('/checkout/{id}', [CartController::class, 'checkout']);
+});
+// Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
+// Route::post('/cart', [CartController::class, 'store'])->middleware('auth');
+// Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
+// Route::delete('/cart/checkout/{id}', [CartController::class, 'checkout']);
 
 
 // ADMIN

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Register')
+
 @section('content')
     <div class="container mt-5">
         <h3 class="text-center mb-3">Register</h3>
