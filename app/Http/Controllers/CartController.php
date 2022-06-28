@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PropertyController;
+use App\Models\TransactionDetail;
 
 class CartController extends Controller
 {
@@ -75,8 +77,24 @@ class CartController extends Controller
     }
 
     public function checkout($id) {
-        Cart::where('user_id', $id)->delete();
+        //buat transaksi baru
+        $newTransaction = [
+            'user_id' => $id
+        ];
+        $transaction = Transaction::create($newTransaction);
 
+        // ambil semua cart punya user -> buatin detail traksaksi untuk tiap properti
+        $carts = Cart::where('user_id', $id)->get();
+        foreach ($carts as $cart) {
+            $transactiondetail = [
+                'transaction_id' => $transaction->id,
+                'property_id' => $cart->property->id
+            ];
+
+            TransactionDetail::create($transactiondetail);
+        }
+
+        Cart::where('user_id', $id)->delete();
         return redirect('/')->with('status', 'Checkout Successful!');
     }
 }

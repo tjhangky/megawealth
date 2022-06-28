@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use App\Models\Transaction;
-use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Requests\UpdateTransactionRequest;
+use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use Illuminate\Database\Eloquent\Collection;
 
 class TransactionController extends Controller
 {
@@ -19,22 +21,12 @@ class TransactionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTransactionRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTransactionRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,33 +34,54 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
-        //
-    }
+        $transactions = Transaction::where('user_id', $id)->get();
+        
+        // kolektion
+        $data = new Collection();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
+        // loop setiap transaksi
+        foreach ($transactions as $transaction) {
+            $transactiondetails = TransactionDetail::where('transaction_id', $transaction->id)->get();
+
+            // loop setiap detail transaksi
+            foreach ($transactiondetails as $transactiondetail) {
+                $property = Property::find($transactiondetail->property_id);
+                $newData = [
+                    'transaction_date' => $transaction->created_at->toDateString(),
+                    'transaction_id' => $transaction->id,
+                    'id' => $property->id,
+                    'type_of_sales' => $property->sale_type,
+                    'building_type' => $property->property_type,
+                    'price' => $property->price,
+                    'location' => $property->address,
+                    'image_path' => $property->image
+                ];
+                $data->push($newData);
+            }
+        }
+
+        // kirim response sesuai format
+        return response()->json([
+            'data' => $data,
+            'user_id' => [
+                'id' => $id
+            ]
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTransactionRequest  $request
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +89,10 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy($id)
     {
         //
     }

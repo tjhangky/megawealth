@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterAPIController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 Route::post('/register', [RegisterAPIController::class, 'store']);
+Route::get('/transaction/{id}', [TransactionController::class, 'show']);

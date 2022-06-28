@@ -13,7 +13,6 @@ class Property extends Model
         'property_type',
         'price',
         'address',
-        'property_type',
         'sale_type',
         'status',
         'price',
@@ -24,4 +23,7 @@ class Property extends Model
         return $this->hasMany(Cart::class);
     }
     
+    public function transactionDetail() {
+        return $this->belongsTo(TransactionDetail::class);
+    }
 }
