@@ -15,7 +15,6 @@ class CartController extends Controller
      */
     public function index()
     {
-
         // MASIH MANUAL TAR GANTI
         if (auth()->user()->is_admin == true) {
             abort(403, 'Unauthorized access.');
