@@ -18,38 +18,40 @@
         @else
             <div class="d-flex">
                 @foreach ($properties as $property)
-                    <div class="card mx-1" style="width: 18rem;">
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
 
-                        @if ($property->image)
-                            <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
-                        @else
-                            {{-- NANTI INI DI DELETE --}}
-                            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
-                        @endif
-
-                        <div class="card-body">
-                            @if ($property->sale_type == 'Rent')
-                                <h5 class="card-title">${{ $property->price }} / month</h5>
+                            @if ($property->image)
+                                <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
                             @else
-                                <h5 class="card-title">${{ $property->price }}</h5>
+                                {{-- NANTI INI DI DELETE --}}
+                                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
                             @endif
 
-                            <p class="card-text">{{ $property->address }}</p>
-                            <div class="d-flex mb-2">
-                                <span class="badge bg-primary">{{ $property->property_type }}</span>
-                            </div>
+                            <div class="card-body">
+                                @if ($property->sale_type == 'Rent')
+                                    <h5 class="card-title">${{ $property->price }} / month</h5>
+                                @else
+                                    <h5 class="card-title">${{ $property->price }}</h5>
+                                @endif
 
-                            <form action="/cart" method="POST">
-                                @csrf
-                                <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                <button type="submit" class="btn btn-primary">
-                                    @if ($property->sale_type == 'Rent')
-                                        Rent
-                                    @else
-                                        Buy
-                                    @endif
-                                </button>
-                            </form>
+                                <p class="card-text">{{ $property->address }}</p>
+                                <div class="d-flex mb-2">
+                                    <span class="badge bg-primary">{{ $property->property_type }}</span>
+                                </div>
+
+                                <form action="/cart" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                    <button type="submit" class="btn btn-primary">
+                                        @if ($property->sale_type == 'Rent')
+                                            Rent
+                                        @else
+                                            Buy
+                                        @endif
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach

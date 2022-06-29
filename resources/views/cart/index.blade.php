@@ -22,35 +22,37 @@
         @else
             <div class="d-flex">
                 @foreach ($carts as $cart)
-                    <div class="card mx-1" style="width: 18rem;">
-                        @if ($cart->property->image)
-                            <img src="{{ asset('storage/' . $cart->property->image) }}" class="card-img-top">
-                        @else
-                            {{-- nanti ini dihapus --}}
-                            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
-                        @endif
+                    <div class="col-md-3">
+                        <div class="card mx-1" style="width: 18rem;">
+                            @if ($cart->property->image)
+                                <img src="{{ asset('storage/' . $cart->property->image) }}" class="card-img-top">
+                            @else
+                                {{-- nanti ini dihapus --}}
+                                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
+                            @endif
 
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                @if ($cart->property->sale_type == 'Rent')
-                                    ${{ $cart->property->price }} / month
-                                @else
-                                    ${{ $cart->property->price }}
-                                @endif
-                            </h5>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @if ($cart->property->sale_type == 'Rent')
+                                        ${{ $cart->property->price }} / month
+                                    @else
+                                        ${{ $cart->property->price }}
+                                    @endif
+                                </h5>
 
-                            <p class="card-text">{{ $cart->property->address }}</p>
-                            <div class="d-flex mb-3">
-                                <span class="badge bg-primary me-1">{{ $cart->property->property_type }}</span>
-                                <span class="badge bg-success">{{ $cart->created_at->format('Y-m-d') }}</span>
+                                <p class="card-text">{{ $cart->property->address }}</p>
+                                <div class="d-flex mb-3">
+                                    <span class="badge bg-primary me-1">{{ $cart->property->property_type }}</span>
+                                    <span class="badge bg-success">{{ $cart->created_at->format('Y-m-d') }}</span>
+                                </div>
+
+                                <form action="/cart/{{ $cart->id }}" method="POST">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure to delete this property from your cart?')">Cancel</button>
+                                </form>
                             </div>
-
-                            <form action="/cart/{{ $cart->id }}" method="POST">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure to delete this property from your cart?')">Cancel</button>
-                            </form>
                         </div>
                     </div>
                 @endforeach
