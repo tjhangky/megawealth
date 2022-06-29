@@ -21,7 +21,8 @@
                             <div class="form-group mb-3">
                                 <label for="email">Email address</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" placeholder="Enter Your Email" value="{{ old('email') }}">
+                                    name="email" placeholder="Enter Your Email"
+                                    value={{ Cookie::get('loginCookie') !== null ? Cookie::get('loginCookie') : '' }}>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -37,7 +38,8 @@
                             </div>
 
                             <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="remember">
+                                <input class="form-check-input" type="checkbox" name="remember"
+                                    checked={{ Cookie::get('loginCookie') !== null }}>
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Remember me
                                 </label>

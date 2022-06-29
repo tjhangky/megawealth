@@ -20,11 +20,14 @@ class LoginController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
-            $request->session()->regenerate();
+        // generate cookie
+        if($request->remember) {
+            Cookie::queue('loginCookie', $request->input('email'), 5);
+            }
 
-            // Cookie::queue('loginCookie', $request->input('email'), 60);
- 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            
             return redirect()->intended('/');
         }
 
