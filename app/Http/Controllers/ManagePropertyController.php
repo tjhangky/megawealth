@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Property;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ManagePropertyController extends Controller
@@ -15,7 +16,20 @@ class ManagePropertyController extends Controller
      */
     public function index()
     {   
-        $properties = Property::latest()->paginate(4);
+        if (request('search')) {
+            $search = request('search');
+            if(Str::lower($search) == 'buy') {
+                $search = 'sale';
+            }
+            $properties = Property::query()
+                ->where('property_type', 'like', '%' . $search . '%')
+                ->orWhere('address', 'like', '%' . $search . '%')
+                ->orWhere('sale_type', 'like', '%' . $search . '%')
+                ->paginate(4);
+        } else {
+                $properties = Property::latest()->paginate(4)->withQueryString();
+        }
+        
         return view('admin.property.index', compact('properties'));
     }
 

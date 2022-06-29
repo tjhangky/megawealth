@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -11,14 +12,18 @@ class PropertyController extends Controller
     {
         // kalo hasil search
         if (request('search')) {
+            $search = request('search');
+            if(Str::lower($search) == 'buy') {
+                $search = 'sale';
+            }
             $properties = Property::query()
-                ->where('property_type', 'like', '%' . request('search') . '%')
-                ->orWhere('address', 'like', '%' . request('search') . '%')
-                ->orWhere('sale_type', 'like', '%' . request('search') . '%')
+                ->where('property_type', 'like', '%' . $search . '%')
+                ->orWhere('address', 'like', '%' . $search . '%')
+                ->orWhere('sale_type', 'like', '%' . $search . '%')
                 ->paginate(4);
         } else {
             // kalo search kosongan
-            $properties = Property::paginate(4);
+            $properties = Property::paginate(4)->withQueryString();
         }
     
         return view('properties.index', compact('properties'));

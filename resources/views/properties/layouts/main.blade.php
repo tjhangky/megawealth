@@ -58,7 +58,7 @@
             </div>
 
             <div class="d-flex justify-content-center mt-5">
-                {{ $properties->links() }}
+                {{ $properties->withQueryString()->links() }}
             </div>
         @endif
 

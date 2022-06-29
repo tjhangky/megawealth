@@ -16,7 +16,8 @@
 
         <div class="container py-5">
             <h1 class="text-center fw-bold my-5">Find Your Future Home</h1>
-            <form action="/properties">
+            {{-- kalo admin dia ke manage property, kalo ngga property biasa --}}
+            <form action="{{ auth()->user()->is_admin == '1' ? '/manage-property' : '/properties' }}">
                 <div class="input-group my-5">
                     <input type="text" class="form-control" placeholder="Enter a City, Property, Buy or Rent"
                         name="search">
