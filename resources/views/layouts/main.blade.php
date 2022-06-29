@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body style="font-family: 'Noto Sans'; font-size: 16px; background-color: rgb(245, 245, 245)">
+<body style="font-family: 'Noto Sans'; font-size: 16px;">
     @include('layouts.navbar')
 
     @yield('content')

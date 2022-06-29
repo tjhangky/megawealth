@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container-fluid py-5"
-        style="background-image: url('{{ asset('storage/home_banner.jpg') }}'); background-size: cover; background-position: bottom; margin-top: -4em">
+        style="background-image: url('{{ asset('storage/misc-images/home_banner.jpg') }}'); background-size: cover; background-position: bottom; margin-top: -4em">
 
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -26,6 +26,36 @@
             </form>
         </div>
 
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/properties/buy" class="text-decoration-none text-dark">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 200px; height: 200px">
+                        <h5>Buy</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md-4">
+                <a href="/properties/rent" class="text-decoration-none text-dark">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 200px; height: 200px">
+                        <h5>Rent</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/about-us" class="text-decoration-none text-dark">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 200px; height: 200px">
+                        <h5>About Us</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 
 @endsection
