@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,7 @@ class ManagePropertyController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|file|max:10240',
         ]);
 
+        // store image ke storage
         if($request->file('image')) {
             $validated['image'] = $request->file('image')->store('property-images');
         }
@@ -81,13 +83,18 @@ class ManagePropertyController extends Controller
             'property_type' => 'required|in:House,Apartment', # nanti diganti pake tabel
             'price' => 'required',
             'address' => 'required',
+            'image' => 'required|image|max:10240|mimes:jpeg,jpg,png'
         ]);
+
+        // store image ke storage
+        if($request->file('image')) {
+            $validated['image'] = $request->file('image')->store('property-images');
+        }
 
         $validated['status'] = $property->status;
         $property->update($validated);
 
         return redirect('/manage-property')->with('status', 'Property updated successfully');
-
     }
 
     /**
@@ -103,9 +110,15 @@ class ManagePropertyController extends Controller
         return redirect()->back()->with('status', 'Property deleted successfully');
     }
 
+
     public function finish(Property $property)
     {
-        $property->update(['status' => 'Completed']);
+        // ubah status jd transaction completed
+        $property->update(['status' => 'Transaction Completed']);
+
+        // delete semua cart yang ada properti yg di finish oleh admin
+        Cart::where('property_id', $property->id)->delete();
+
         return redirect()->back()->with('status', 'Property transaction completed!');
     }
 }
