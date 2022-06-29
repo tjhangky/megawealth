@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Property;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PropertyController;
 use App\Models\TransactionDetail;
+use App\Http\Controllers\PropertyController;
 
 class CartController extends Controller
 {
@@ -39,12 +40,20 @@ class CartController extends Controller
             return redirect()->back()->with('status', 'Admin cannot make a transaction.');
             // abort(403, 'Unauthorized access.');
         }
+
+        // cek kalo properti udah ada di cart
+        $already_in_cart = Cart::where('user_id', auth()->user()->id);
+        if($already_in_cart->where('property_id', $request->property_id)->exists()) {
+            return redirect('/cart')->with('status', 'Property already in your cart!');
+        };
         
+        // buat cart baru
         $cart = [
             'user_id' => auth()->user()->id,
             'property_id' => $request->property_id,
         ];
         Cart::create($cart);
+
 
         // change property status to 'Cart'
         $property_controller = new PropertyController;
@@ -65,7 +74,7 @@ class CartController extends Controller
         $property_id = $cart->property_id;
         $cart->delete();
 
-        // change property status to 'Open' if no longer exist in cart
+        // ganti property status to 'Open' kalo gaada di cart siapapun
         $property_exist = Cart::where('property_id', $property_id)->exists();
         if (!$property_exist) {
             $status = 'Open';
@@ -75,6 +84,7 @@ class CartController extends Controller
 
         return redirect('/cart')->with('status', 'Property has been removed from cart!');
     }
+
 
     public function checkout($id) {
         //buat transaksi baru
@@ -94,6 +104,16 @@ class CartController extends Controller
             TransactionDetail::create($transactiondetail);
         }
 
+
+        // ubah status properti jadi complete + delete semua cart yg ada properti yg di checkout
+        $carts = Cart::where('user_id', $id)->get();
+        foreach($carts as $cart) {
+            $property = Property::find($cart->property_id);
+            $property->update(['status' => 'Transaction Completed']);
+            Cart::where('property_id', $cart->property_id)->delete();
+        }
+
+        // delete cart user yang checkout
         Cart::where('user_id', $id)->delete();
         return redirect('/')->with('status', 'Checkout Successful!');
     }

@@ -70,4 +70,4 @@ Route::get('/manage-property/{property}/edit', [ManagePropertyController::class,
 Route::put('/manage-property/{property}', [ManagePropertyController::class, 'update']);
 Route::delete('/manage-property/{property}', [ManagePropertyController::class, 'destroy']);
 // Route::resource('/manage-property', ManagePropertyController::class)->middleware('auth');
-// Route::put('/manage-property/{property}/finish', [ManagePropertyController::class, 'finish']);
+Route::put('/manage-property/{property}/finish', [ManagePropertyController::class, 'finish']);
