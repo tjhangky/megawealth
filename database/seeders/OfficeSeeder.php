@@ -16,47 +16,47 @@ class OfficeSeeder extends Seeder
     {
         // Offices
         Office::create([
-            'name' => 'Office 1',
-            'address' => 'Jl. Raya Kedungwringin No.1',
-            'contact_name' => 'Theodore',
+            'name' => 'Bojong Office',
+            'address' => 'Jl. Patriot Baja No.3',
+            'contact_name' => 'James Arifin',
+            'contact_phone' => '0812-1436-5830',
+            'image' => '',
+        ]);
+
+        Office::create([
+            'name' => 'Kebumen Office',
+            'address' => 'Jl. Raya Kebumen No.55',
+            'contact_name' => 'Viktor Priyadi',
             'contact_phone' => '0812-3456-7890',
             'image' => '',
         ]);
 
         Office::create([
-            'name' => 'Office 2',
-            'address' => 'Jl. Raya Kedungwringin No.2',
-            'contact_name' => 'Jeremy',
-            'contact_phone' => '0812-3456-7890',
-            'image' => '',
-        ]);
-
-        Office::create([
-            'name' => 'Office 3',
-            'address' => 'Jl. Raya Kedungwringin No.3',
-            'contact_name' => 'Jeremy',
+            'name' => 'Jakarta Office',
+            'address' => 'Jl. Kebon Jeruk Raya No.22',
+            'contact_name' => 'Jansen Tomat',
             'contact_phone' => '0812-3456-7890',
             'image' => '',
         ]);
         
         Office::create([
-            'name' => 'Office 4',
+            'name' => 'Pomala Office',
             'address' => 'Jl. Raya Kedungwringin No.4',
-            'contact_name' => 'Jeremy',
+            'contact_name' => 'Merry Poniyem',
             'contact_phone' => '0812-3456-7890',
             'image' => '',
         ]);
 
         Office::create([
-            'name' => 'Office 5',
+            'name' => 'Manokwari Office',
             'address' => 'Jl. Raya Kedungwringin No.5',
-            'contact_name' => 'Jeremy',
+            'contact_name' => 'Maria ',
             'contact_phone' => '0812-3456-7890',
             'image' => '',
         ]);
 
         Office::create([
-            'name' => 'Office 6',
+            'name' => 'Padang Office',
             'address' => 'Jl. Raya Kedungwringin No.6',
             'contact_name' => 'Jeremy',
             'contact_phone' => '0812-3456-7890',

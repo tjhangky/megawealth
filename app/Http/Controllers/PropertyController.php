@@ -9,6 +9,7 @@ class PropertyController extends Controller
 {
     public function index()
     {
+        // kalo hasil search
         if (request('search')) {
             $properties = Property::query()
                 ->where('property_type', 'like', '%' . request('search') . '%')
@@ -16,6 +17,7 @@ class PropertyController extends Controller
                 ->orWhere('sale_type', 'like', '%' . request('search') . '%')
                 ->paginate(4);
         } else {
+            // kalo search kosongan
             $properties = Property::paginate(4);
         }
     

@@ -14,8 +14,8 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained('users');
             // $table->foreignId('property_id')->constrained('properties');
             $table->timestamps();
         });

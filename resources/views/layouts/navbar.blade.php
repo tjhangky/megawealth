@@ -10,18 +10,18 @@
 
                 {{-- display role biar mudah cek --}}
                 @guest
-                    <span class="nav-link text-warning">ROLE : GUEST</span>
+                    <span class="nav-link text-warning button-outline">GUEST</span>
                 @endguest
 
                 @auth
                     @cannot('admin')
-                        <span class="nav-link text-warning">ROLE : MEMBER</span>
+                        <span class="nav-link text-warning">MEMBER</span>
                     @endcannot
 
                 @endauth
 
                 @can('admin')
-                    <span class="nav-link text-warning">ROLE : ADMIN</span>
+                    <span class="nav-link text-warning">ADMIN</span>
                 @endcan
 
                 <a class="nav-item nav-link" href="/">Home</span></a>
