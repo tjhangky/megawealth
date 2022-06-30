@@ -16,75 +16,93 @@ class PropertySeeder extends Seeder
     {
         // Properties
         Property::create([
-            'price' => 1000,
-            'address' => 'Jl. Raya Kedungwringin No.1',
+            'price' => 10000,
+            'address' => 'Jl. Sudirman No.10, Jakarta',
             'property_type' => 'Apartment',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => '',
+            'image' => 'properties-3.png',
+        ]);
+
+        Property::create([
+            'price' => 15000,
+            'address' => 'Jl. Haji Agus Salim No.11, Jakarta',
+            'property_type' => 'Apartment',
+            'sale_type' => 'Sale',
+            'status' => 'Open',
+            'image' => 'properties-5.png',
+        ]);
+
+        Property::create([
+            'price' => 1500,
+            'address' => 'Jl. Sudirman No.12, Jakarta',
+            'property_type' => 'Apartment',
+            'sale_type' => 'Rent',
+            'status' => 'Open',
+            'image' => 'properties-9.png',
         ]);
 
         Property::create([
             'price' => 2000,
-            'address' => 'Jl. Raya Kedungwringin No.2',
-            'property_type' => 'Apartment',
-            'sale_type' => 'Sale',
-            'status' => 'Open',
-            'image' => '',
-        ]);
-
-        Property::create([
-            'price' => 3000,
-            'address' => 'Jl. Raya Kedungwringin No.3',
+            'address' => 'Jl. Galaxy No.14, Bekasi',
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => '',
+            'image' => 'properties-10.png',
         ]);
 
         Property::create([
-            'price' => 4000,
-            'address' => 'Jl. Raya Kedungwringin No.4',
+            'price' => 150000,
+            'address' => 'Jl. Jakarta Garden City No.25, JGC',
+            'property_type' => 'House',
+            'sale_type' => 'Sale',
+            'status' => 'Open',
+            'image' => 'properties-2.png',
+        ]);
+
+        Property::create([
+            'price' => 170000,
+            'address' => 'Jl. Kuningan No.19, Tangerang',
+            'property_type' => 'House',
+            'sale_type' => 'Sale',
+            'status' => 'Open',
+            'image' => 'properties-1.png',
+        ]);
+
+        Property::create([
+            'price' => 2000,
+            'address' => 'Jl. Jendral No.7, Bandung',
+            'property_type' => 'House',
+            'sale_type' => 'Rent',
+            'status' => 'Open',
+            'image' => 'properties-4.png',
+        ]);
+
+        Property::create([
+            'price' => 1500,
+            'address' => 'Jl. Lubuk Minturun No.18, Padang',
+            'property_type' => 'House',
+            'sale_type' => 'Rent',
+            'status' => 'Open',
+            'image' => 'properties-6.png',
+        ]);
+
+        Property::create([
+            'price' => 170000,
+            'address' => 'Jl. Kemayoran No.20, Surabaya',
+            'property_type' => 'House',
+            'sale_type' => 'Sale',
+            'status' => 'Open',
+            'image' => 'properties-11.png',
+        ]);
+
+        Property::create([
+            'price' => 1500,
+            'address' => 'Jl. Mangunsakoro No.1, Jakarta',
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => '',
-        ]);
-
-        Property::create([
-            'price' => 5000,
-            'address' => 'Jl. Raya Kedungwringin No.5',
-            'property_type' => 'House',
-            'sale_type' => 'Sale',
-            'status' => 'Open',
-            'image' => '',
-        ]);
-
-        Property::create([
-            'price' => 6000,
-            'address' => 'Jl. Raya Kedungwringin No.6',
-            'property_type' => 'House',
-            'sale_type' => 'Sale',
-            'status' => 'Open',
-            'image' => '',
-        ]);
-
-        Property::create([
-            'price' => 7000,
-            'address' => 'Jl. Raya Kedungwringin No.7',
-            'property_type' => 'House',
-            'sale_type' => 'Rent',
-            'status' => 'Open',
-            'image' => '',
-        ]);
-
-        Property::create([
-            'price' => 8000,
-            'address' => 'Jl. Raya Kedungwringin No.8',
-            'property_type' => 'House',
-            'sale_type' => 'Rent',
-            'status' => 'Open',
-            'image' => '',
+            'image' => 'properties-12.png',
         ]);
     }
 }
