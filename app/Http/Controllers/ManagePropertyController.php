@@ -127,6 +127,9 @@ class ManagePropertyController extends Controller
 
     public function finish(Property $property)
     {
+
+
+        
         // ubah status jd transaction completed
         $property->update(['status' => 'Transaction Completed']);
 

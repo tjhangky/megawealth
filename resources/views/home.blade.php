@@ -16,24 +16,24 @@
 
         <div class="container py-5">
             <h1 class="text-center fw-bold my-5">Find Your Future Home</h1>
+
             {{-- kalo admin dia ke manage property, kalo ngga property biasa --}}
-            <form action="{{ auth()->user() && auth()->user()->is_admin == '1' ? '/manage-property' : '/properties' }}">
-                <div class="input-group my-5">
+            <form action="{{ auth()->user() && auth()->user()->is_admin == true ? '/manage-property' : '/properties' }}">
+                <div class="input-group mt-5">
                     <input type="text" class="form-control" placeholder="Enter a City, Property, Buy or Rent"
                         name="search">
                     <button class="btn btn-dark" type="submit">Search</button>
                 </div>
             </form>
         </div>
-
     </div>
 
-    <div class="container my-5">
+    <div class="container my-4">
         <div class="row">
             <div class="col-md-4">
                 <a href="/properties/buy" class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 200px; height: 200px">
+                        <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 150px; height: 150px">
                         <h5>Buy</h5>
                     </div>
                 </a>
@@ -42,7 +42,7 @@
             <div class="col-md-4">
                 <a href="/properties/rent" class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 200px; height: 200px">
+                        <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 150px; height: 150px">
                         <h5>Rent</h5>
                     </div>
                 </a>
@@ -50,7 +50,7 @@
             <div class="col-md-4">
                 <a href="/about-us" class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 200px; height: 200px">
+                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 150px; height: 150px">
                         <h5>About Us</h5>
                     </div>
                 </a>

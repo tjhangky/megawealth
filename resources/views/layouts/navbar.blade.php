@@ -50,13 +50,9 @@
 
                     <form action="/logout" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-link">Logout</button>
+                        <button type="submit" class="btn btn-outline-warning btn-sm">Logout</button>
                     </form>
                 @endauth
-
-
-
-
             </div>
         </div>
     </div>

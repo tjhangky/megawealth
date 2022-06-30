@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Manage Property')
+
 @section('content')
     <div class="container">
 
