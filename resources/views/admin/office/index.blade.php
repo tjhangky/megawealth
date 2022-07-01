@@ -19,7 +19,7 @@
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
 
-                        <img src="{{ asset('storage/office-images/' . $office->image) }}" class="card-img-top">
+                        <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
 
                         <div class="card-body">
                             <p class="card-title">{{ $office->name }}</p>
