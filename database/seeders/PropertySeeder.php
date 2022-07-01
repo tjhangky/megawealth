@@ -21,7 +21,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'Apartment',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => 'properties-3.png',
+            'image' => 'properties-1.png',
         ]);
 
         Property::create([
@@ -30,7 +30,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'Apartment',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => 'properties-5.png',
+            'image' => 'properties-2.png',
         ]);
 
         Property::create([
@@ -39,7 +39,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => 'properties-9.png',
+            'image' => 'properties-3.png',
         ]);
 
         Property::create([
@@ -48,7 +48,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => 'properties-10.png',
+            'image' => 'properties-4.png',
         ]);
 
         Property::create([
@@ -57,7 +57,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'House',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => 'properties-2.png',
+            'image' => 'properties-5.png',
         ]);
 
         Property::create([
@@ -66,7 +66,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'House',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => 'properties-1.png',
+            'image' => 'properties-6.png',
         ]);
 
         Property::create([
@@ -75,7 +75,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'House',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => 'properties-4.png',
+            'image' => 'properties-7.png',
         ]);
 
         Property::create([
@@ -84,7 +84,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'House',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => 'properties-6.png',
+            'image' => 'properties-8.png',
         ]);
 
         Property::create([
@@ -93,7 +93,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'House',
             'sale_type' => 'Sale',
             'status' => 'Open',
-            'image' => 'properties-11.png',
+            'image' => 'properties-9.png',
         ]);
 
         Property::create([
@@ -102,7 +102,7 @@ class PropertySeeder extends Seeder
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
             'status' => 'Open',
-            'image' => 'properties-12.png',
+            'image' => 'properties-10.png',
         ]);
     }
 }
