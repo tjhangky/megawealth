@@ -24,10 +24,11 @@ class PropertyController extends Controller
                 ->where('property_type', 'like', '%' . $search . '%')
                 ->orWhere('address', 'like', '%' . $search . '%')
                 ->orWhere('sale_type', 'like', '%' . $search . '%')
+                ->whereIn('status', ['Open', 'Cart'])
                 ->paginate(4);
         } else {
             // kalo search kosongan
-            $properties = Property::paginate(4);
+            $properties = Property::whereIn('status', ['Open', 'Cart'])->paginate(4);
         }
     
         return view('properties.index', compact('properties'));
@@ -39,7 +40,7 @@ class PropertyController extends Controller
             abort(403, 'Unauthorized access.');
         }
 
-        $properties = Property::where('sale_type', 'like', 'sale')->paginate(4);
+        $properties = Property::where('sale_type', 'sale')->whereIn('status', ['Open', 'Cart'])->paginate(4);
         return view('properties.buy', compact('properties'));
     }
 
@@ -49,7 +50,7 @@ class PropertyController extends Controller
             abort(403, 'Unauthorized access.');
         }
         
-        $properties = Property::where('sale_type', 'like', 'rent')->paginate(4);
+        $properties = Property::where('sale_type', 'rent')->whereIn('status', ['Open', 'Cart'])->paginate(4);
         return view('properties.rent', compact('properties'));
     }
     
