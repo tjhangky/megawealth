@@ -19,7 +19,7 @@ class MemberMiddleware
     {
         if(!Auth::check()) {
             return redirect('/login');
-        } else if(Auth::user()->role == 'admin') {
+        } else if(Auth::user()->role != 'member') {
             abort(401, 'Unauthorized access.');
         }
         return $next($request);
