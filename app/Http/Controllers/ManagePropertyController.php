@@ -63,7 +63,6 @@ class ManagePropertyController extends Controller
         if($request->file('image')) {
             $validated['image'] = $request->file('image')->store('property-images');
         }
-
     
         Property::create($validated);
 
@@ -97,7 +96,7 @@ class ManagePropertyController extends Controller
             'property_type' => 'required|in:House,Apartment', # nanti diganti pake tabel
             'price' => 'required',
             'address' => 'required',
-            'image' => 'required|image|max:10240|mimes:jpeg,jpg,png'
+            'image' => 'image|max:10240|mimes:jpeg,jpg,png'
         ]);
 
         // store image ke storage
