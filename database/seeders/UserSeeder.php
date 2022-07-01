@@ -31,7 +31,8 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
-            'is_admin' => 1,
+            // 'is_admin' => 1,
+            'role' => 'admin',
         ]);
     }
 }

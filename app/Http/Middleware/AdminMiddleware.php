@@ -19,7 +19,7 @@ class AdminMiddleware
     {
         if(!Auth::check()) {
             return redirect('/login');
-        } else if(Auth::user()->is_admin == false) {
+        } else if(!Auth::user()->role == 'admin') {
             abort(401, 'Unauthorized access.');
         }
         
