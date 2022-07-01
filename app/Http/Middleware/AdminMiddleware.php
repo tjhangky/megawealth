@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->guest() || auth()->user()->is_admin == false) {
-            abort(403, 'Unauthorized access.');
+        if(!Auth::check()) {
+            return redirect('/login');
+        } else if(Auth::user()->is_admin == false) {
+            abort(401, 'Unauthorized access.');
         }
-
+        
         return $next($request);
     }
 }
