@@ -21,12 +21,7 @@
                     <div class="col-md-3">
                         <div class="card" style="width: 18rem;">
 
-                            @if ($property->image)
-                                <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
-                            @else
-                                {{-- NANTI INI DI DELETE --}}
-                                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding">
-                            @endif
+                            <img src="{{ asset('storage/property-images/' . $property->image) }}" class="card-img-top">
 
                             <div class="card-body">
                                 @if ($property->sale_type == 'Rent')
@@ -43,7 +38,7 @@
                                 <form action="/cart" method="POST">
                                     @csrf
                                     <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-dark">
                                         @if ($property->sale_type == 'Rent')
                                             Rent
                                         @else

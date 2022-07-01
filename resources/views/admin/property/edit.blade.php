@@ -1,11 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mt-5 d-flex justify-content-center">
+    <div class="container mt-5">
         <div class="row">
+
             <div class="col-md-6">
-                <img src="https://source.unsplash.com/1600x900/?bulding" style="width: 100%">
+                <img src="{{ asset('storage/property-images/' . $property->image) }}" style="width: 100%; height: 400px">
             </div>
+
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -22,6 +24,7 @@
                                     </option>
                                     {{-- SEMENTARA PAKE MANUAL DULU, NANTI SALE RENT DIJADIIN TABLE BARU AJA JD TINGGAL DI LOOP --}}
                                 </select>
+
                                 @error('sale_type')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -70,7 +73,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary mt-3">Update</button>
+                            <button type="submit" class="btn btn-dark">Update</button>
                         </form>
                     </div>
                 </div>

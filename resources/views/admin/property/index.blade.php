@@ -10,6 +10,7 @@
                 No Properties Found.
             </div>
         @else
+            {{-- status crud properti --}}
             @if (session('status'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('status') }}
@@ -17,20 +18,14 @@
                 </div>
             @endif
 
-            <a href="/manage-property/create" class="btn btn-primary mb-5">+ Add Property</a>
+            <a href="/manage-property/create" class="btn btn-dark mb-5">+ Add Property</a>
 
             <div class="row">
                 @foreach ($properties as $property)
                     <div class="col-md-3">
                         <div class="card" style="width: 18rem;">
 
-                            @if ($property->image)
-                                <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
-                            @else
-                                {{-- NANTI INI DI DELETE --}}
-                                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?bulding"
-                                    alt="Card image cap">
-                            @endif
+                            <img src="{{ asset('storage/property-images/' . $property->image) }}" class="card-img-top">
 
                             <div class="card-body">
                                 @if ($property->sale_type == 'Rent')
@@ -40,7 +35,7 @@
                                 @endif
 
                                 <p class="card-text">{{ $property->address }}</p>
-                                <div class="d-flex mb-2">
+                                <div class="d-flex mb-3">
                                     <span class="badge bg-primary me-1">{{ $property->property_type }}</span>
                                     <span class="badge bg-danger me-1">{{ $property->sale_type }}</span>
                                     <span class="badge bg-warning me-1">{{ $property->status }}</span>
@@ -56,6 +51,7 @@
                                             onclick="return confirm('Are you sure want to delete {{ $property->name }} ?')">Delete</button>
                                     </form>
 
+                                    {{-- cek status property yg cart --}}
                                     @if ($property->status == 'Cart')
                                         <form action="/manage-property/{{ $property->id }}/finish" method="POST">
                                             @csrf

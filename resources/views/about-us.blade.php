@@ -19,17 +19,14 @@
 
     <div class="container mt-3">
         <h4>Our Offices</h4>
-        <div class="d-flex">
+        <div class="d-flex mt-3">
             @foreach ($offices as $office)
                 <div class="card mx-1" style="width: 18rem;">
-                    @if ($office->image)
-                        <img src="{{ asset('storage/office-images/' . $office->image) }}" class="card-img-top">
-                    @else
-                        {{-- NANTI INI dan if else DI DELETE --}}
-                        <img class="card-img-top" src="https://source.unsplash.com/1600x900/?building">
-                    @endif
+
+                    <img src="{{ asset('storage/office-images/' . $office->image) }}" class="card-img-top">
+
                     <div class="card-body">
-                        <h5 class="card-title">{{ $office->name }}</h5>
+                        <p class="card-title">{{ $office->name }}</p>
                         <p class="card-text ">{{ $office->address }}</p>
                         <p class="card-text">{{ $office->contact_name }} : {{ $office->contact_phone }}</p>
                     </div>

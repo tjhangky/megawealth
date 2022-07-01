@@ -18,7 +18,7 @@
             <h1 class="text-center fw-bold my-5">Find Your Future Home</h1>
 
             {{-- kalo admin dia ke manage property, kalo ngga property biasa --}}
-            <form action="{{ auth()->user() && auth()->user()->is_admin == true ? '/manage-property' : '/properties' }}">
+            <form action="{{ auth()->check() && auth()->user()->role == 'admin' ? '/manage-property' : '/properties' }}">
                 <div class="input-group mt-5">
                     <input type="text" class="form-control" placeholder="Enter a City, Property, Buy or Rent"
                         name="search">
