@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PropertyController extends Controller
 {
     public function index()
     {
+        if (Gate::allows('admin')) {
+            abort(403, 'Unauthorized access.');
+        }
+
         // kalo hasil search
         if (request('search')) {
             $search = request('search');
@@ -29,18 +33,19 @@ class PropertyController extends Controller
         return view('properties.index', compact('properties'));
     }
 
-    public function buy() {
-        // MASIH MANUAL TAR GANTI
-        if (auth()->user() && auth()->user()->is_admin == true) {
+    public function buy() 
+    {
+        if (Gate::allows('admin')) {
             abort(403, 'Unauthorized access.');
         }
+
         $properties = Property::where('sale_type', 'like', 'sale')->paginate(4);
         return view('properties.buy', compact('properties'));
     }
 
-    public function rent() {
-        // MASIH MANUAL TAR GANTI
-        if (auth()->user() && auth()->user()->is_admin == true) {
+    public function rent() 
+    {
+        if (Gate::allows('admin')) {
             abort(403, 'Unauthorized access.');
         }
         
@@ -48,9 +53,4 @@ class PropertyController extends Controller
         return view('properties.rent', compact('properties'));
     }
     
-    // update status to 'Cart / Open / Completed'
-    public function update($status, $id) {
-        Property::find($id)->update(['status' => $status]);
-        return redirect('/properties');
-    }
 }

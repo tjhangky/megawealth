@@ -43,11 +43,8 @@ class CartController extends Controller
         ];
         Cart::create($cart);
 
-
-        // change property status to 'Cart'
-        $property_controller = new PropertyController;
-        $status = 'Cart';
-        $property_controller->update($status, $request->property_id);
+        // update property status to cart
+        Property::find($request->property_id)->update(['status' => 'Cart']);
 
         return redirect('/cart')->with('status', 'Property added to cart!');
     }
