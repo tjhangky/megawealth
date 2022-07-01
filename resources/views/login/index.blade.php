@@ -38,8 +38,7 @@
                             </div>
 
                             <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="remember"
-                                    checked={{ Cookie::get('loginCookie') !== null }}>
+                                <input class="form-check-input" type="checkbox" name="remember">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Remember me
                                 </label>
