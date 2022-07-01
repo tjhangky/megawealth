@@ -18,11 +18,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        // MASIH MANUAL TAR GANTI
-        if (auth()->user()->is_admin == true) {
-            abort(403, 'Unauthorized access.');
-        }
-
         $carts = Cart::where('user_id', auth()->user()->id)->latest()->paginate(4);
         return view('cart.index', compact('carts'));
     }
@@ -35,12 +30,6 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        // MASIH MANUAL TAR GANTI
-        if (auth()->user()->is_admin == true) {
-            return redirect()->back()->with('status', 'Admin cannot make a transaction.');
-            // abort(403, 'Unauthorized access.');
-        }
-
         // cek kalo properti udah ada di cart
         $already_in_cart = Cart::where('user_id', auth()->user()->id);
         if($already_in_cart->where('property_id', $request->property_id)->exists()) {
@@ -103,7 +92,6 @@ class CartController extends Controller
 
             TransactionDetail::create($transactiondetail);
         }
-
 
         // ubah status properti jadi complete + delete semua cart yg ada properti yg di checkout
         $carts = Cart::where('user_id', $id)->get();
