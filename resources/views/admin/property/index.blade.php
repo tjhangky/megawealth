@@ -25,7 +25,7 @@
                     <div class="col-md-3">
                         <div class="card" style="width: 18rem;">
 
-                            <img src="{{ asset('storage/property-images/' . $property->image) }}" class="card-img-top">
+                            <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
 
                             <div class="card-body">
                                 @if ($property->sale_type == 'Rent')

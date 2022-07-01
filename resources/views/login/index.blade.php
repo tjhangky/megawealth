@@ -19,7 +19,7 @@
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="email">Email address</label>
+                                <label for="email" class="form-label">Email address</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                     name="email" placeholder="Enter Your Email"
                                     value={{ Cookie::get('loginCookie') !== null ? Cookie::get('loginCookie') : '' }}>
@@ -29,7 +29,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="password">Password</label>
+                                <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" placeholder="Your password must be at least 8 characters">
                                 @error('password')

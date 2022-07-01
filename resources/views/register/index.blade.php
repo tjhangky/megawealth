@@ -14,7 +14,7 @@
                         <form action="/register" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="name">Name</label>
+                                <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" placeholder="Enter Your Name" value="{{ old('name') }}">
                                 @error('name')
@@ -23,7 +23,7 @@
 
                             </div>
                             <div class="form-group mb-3">
-                                <label for="email">Email address</label>
+                                <label for="email" class="form-label">Email address</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                     name="email" placeholder="Enter Your Email" value="{{ old('email') }}">
                                 @error('email')
@@ -33,7 +33,7 @@
 
 
                             <div class="form-group mb-3">
-                                <label for="password">Password</label>
+                                <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" placeholder="Your password must be at least 8 characters">
                                 @error('password')
@@ -43,7 +43,7 @@
 
 
                             <div class="form-group mb-3">
-                                <label for="confirm-password">Confirm Password</label>
+                                <label for="confirm-password" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control @error('confirm-password') is-invalid @enderror"
                                     name="confirm-password" placeholder="Re-type your password">
                                 @error('confirm-password')

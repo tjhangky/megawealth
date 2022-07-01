@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-md-6">
-                <img src="{{ asset('storage/property-images/' . $property->image) }}" style="width: 100%; height: 400px">
+                <img src="{{ asset('storage/' . $property->image) }}" style="width: 100%; height: 400px">
             </div>
 
             <div class="col-md-6">
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="price">Price</label>
+                                <label for="price" class="form-label">Price</label>
                                 <input type="number" class="form-control @error('price') is-invalid @enderror"
                                     name="price" value="{{ old('price', $property->price) }}">
                                 @error('price')
@@ -55,7 +55,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="address">Location</label>
+                                <label for="address" class="form-label">Location</label>
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     name="address" value="{{ old('address', $property->address) }}">
                                 @error('address')
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="file">Upload Image</label>
+                                <label for="file" class="form-label">Upload Image</label>
                                 <input type="file" name="image"
                                     class="form-control
                                     @error('image') is-invalid @enderror">

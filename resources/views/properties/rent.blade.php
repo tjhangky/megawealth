@@ -1,4 +1,4 @@
-@extends('properties.layouts.main')
+@extends('properties.main')
 
 @section('title', 'Rent')
 
