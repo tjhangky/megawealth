@@ -23,7 +23,7 @@ class PropertyController extends Controller
                 ->paginate(4);
         } else {
             // kalo search kosongan
-            $properties = Property::paginate(4)->withQueryString();
+            $properties = Property::paginate(4);
         }
     
         return view('properties.index', compact('properties'));
@@ -47,7 +47,7 @@ class PropertyController extends Controller
         $properties = Property::where('sale_type', 'like', 'rent')->paginate(4);
         return view('properties.rent', compact('properties'));
     }
-
+    
     // update status to 'Cart / Open / Completed'
     public function update($status, $id) {
         Property::find($id)->update(['status' => $status]);
