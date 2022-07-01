@@ -63,9 +63,11 @@ class CartController extends Controller
         // ganti property status to 'Open' kalo gaada di cart siapapun
         $property_exist = Cart::where('property_id', $property_id)->exists();
         if (!$property_exist) {
-            $status = 'Open';
-            $property_controller = new PropertyController;
-            $property_controller->update($status, $property_id);
+            // $status = 'Open';
+            // $property_controller = new PropertyController;
+            // $property_controller->update($status, $property_id);
+
+            Property::find($property_id)->update(['status' => 'Open']);
         }
 
         return redirect('/cart')->with('status', 'Property has been removed from cart!');
@@ -99,7 +101,7 @@ class CartController extends Controller
         }
 
         // delete cart user yang checkout
-        Cart::where('user_id', $id)->delete();
+        // Cart::where('user_id', $id)->delete();
         return redirect('/')->with('status', 'Checkout Successful!');
     }
 }
