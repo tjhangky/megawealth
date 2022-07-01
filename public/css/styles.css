@@ -1,12 +1,12 @@
 .card {
-    box-shadow: 0 1px 5px rgb(223, 223, 223);
+    box-shadow: 0 3px 5px rgb(223, 223, 223);
     transition: 0.1s ease-in-out;
 }
-
+/* 
 .card:hover {
     transform: scale(1.03);
     box-shadow: 0 1px 5px rgb(182, 181, 181);
-}
+} */
 
 .card-title {
     font-weight: bold;

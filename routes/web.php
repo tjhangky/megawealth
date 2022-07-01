@@ -84,10 +84,10 @@ Route::middleware('admin')->prefix('manage-company')->group(function() {
 // manage properties
 
 Route::middleware('admin')->prefix('manage-property')->group(function() {
-    Route::get('/', [ManagePropertyController::class, 'index'])->middleware('admin');
-    Route::get('create', [ManagePropertyController::class, 'create'])->middleware('admin');
+    Route::get('/', [ManagePropertyController::class, 'index']);
+    Route::get('create', [ManagePropertyController::class, 'create']);
     Route::post('/', [ManagePropertyController::class, 'store']);
-    Route::get('/{property}/edit', [ManagePropertyController::class, 'edit'])->middleware('admin');
+    Route::get('/{property}/edit', [ManagePropertyController::class, 'edit']);
     Route::put('/{property}', [ManagePropertyController::class, 'update']);
     Route::delete('/{property}', [ManagePropertyController::class, 'destroy']);
     Route::put('/{property}/finish', [ManagePropertyController::class, 'finish']);

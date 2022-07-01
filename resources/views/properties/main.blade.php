@@ -34,18 +34,19 @@
                                 <div class="d-flex mb-2">
                                     <span class="badge bg-primary">{{ $property->property_type }}</span>
                                 </div>
-
-                                <form action="/cart" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                    <button type="submit" class="btn btn-dark">
-                                        @if ($property->sale_type == 'Rent')
-                                            Rent
-                                        @else
-                                            Buy
-                                        @endif
-                                    </button>
-                                </form>
+                                <div class="d-flex justify-content-evenly">
+                                    <form action="/cart" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                        <button type="submit" class="btn btn-dark">
+                                            @if ($property->sale_type == 'Rent')
+                                                Rent
+                                            @else
+                                                Buy
+                                            @endif
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
