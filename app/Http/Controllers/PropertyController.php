@@ -10,6 +10,7 @@ class PropertyController extends Controller
 {
     public function index()
     {
+        // admin gabole akses
         if (Gate::allows('admin')) {
             abort(403, 'Unauthorized access.');
         }
@@ -36,6 +37,7 @@ class PropertyController extends Controller
 
     public function buy() 
     {
+        // admin gabole akses
         if (Gate::allows('admin')) {
             abort(403, 'Unauthorized access.');
         }
@@ -46,6 +48,7 @@ class PropertyController extends Controller
 
     public function rent() 
     {
+        // admin gabole akses
         if (Gate::allows('admin')) {
             abort(403, 'Unauthorized access.');
         }
