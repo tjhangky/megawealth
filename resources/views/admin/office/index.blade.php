@@ -14,7 +14,7 @@
 
         <a href="/manage-company/create" class="btn btn-primary mb-5">+ Add Office</a>
 
-        <div class="d-flex">
+        <div class="row">
             @foreach ($offices as $office)
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">

@@ -17,8 +17,8 @@
         <div class="container py-5">
             <h1 class="text-center fw-bold my-5">Find Your Future Home</h1>
 
-            {{-- kalo admin dia ke manage property, kalo ngga property biasa --}}
-            <form action="{{ auth()->check() && auth()->user()->role == 'admin' ? '/manage-property' : '/properties' }}">
+            {{-- kalo admin dia ke manage property, kalo ngga ke view property --}}
+            <form action="{{ Gate::allows('admin') ? '/manage-property' : '/properties' }}">
                 <div class="input-group mt-5">
                     <input type="text" class="form-control" placeholder="Enter a City, Property, Buy or Rent"
                         name="search">
@@ -28,10 +28,12 @@
         </div>
     </div>
 
+    {{-- ICONS --}}
     <div class="container my-4">
         <div class="row">
             <div class="col-md-4">
-                <a href="/properties/buy" class="text-decoration-none text-dark">
+                <a href="{{ Gate::allows('admin') ? '/manage-property?search=buy' : 'properties/buy' }}/"
+                    class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
                         <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 150px; height: 150px">
                         <h5>Buy</h5>

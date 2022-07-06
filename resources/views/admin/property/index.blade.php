@@ -23,7 +23,7 @@
             <div class="row">
                 @foreach ($properties as $property)
                     <div class="col-md-3">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
 
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
 
