@@ -24,24 +24,30 @@ class LoginAPIController extends Controller
             ]);
         }
         
-        // invalid credential
+        
         $user = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
+        // invalid credential
         if (!Auth::attempt($user)) {
+
             return response()->json([
                 'status' => 'Login Failed',
             ]);
+        } else {
+
+            // $token = auth()->user()->createToken('Bearer Token')->accessToken;
+            $user = User::where('email', $request->email)->first();
+            $token = $user->createToken('BearerToken')->accessToken;
+            return response()->json([
+                'status' => 'Login Successful',
+                'Token' => $token
+            ]);       
         }
-        // $token = auth()->user()->createToken('Bearer Token')->accessToken;
-        $user = User::where('email', $request->email)->first();
-        $token = $user->createToken('Bearer Token')->accessToken;
-        return response()->json([
-            'status' => 'Login Successful',
-            'Token' => $token
-        ]);       
+        
+        
         
         
 

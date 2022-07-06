@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        // gates buat admin
+        // gates buat admin saja
         Gate::define('admin', function (User $user) {
             return $user->role == 'admin';
         });

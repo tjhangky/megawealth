@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +16,7 @@ class RegisterAPIController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
@@ -24,14 +24,14 @@ class RegisterAPIController extends Controller
         ]);
 
         if($validator->fails()) {
+            // data ga valid
             return response()->json([
                 'message' => 'The given data was invalid',
                 'errors' => $validator->errors()
-                
-            ]);
-        } else {
+            ], 422);
 
-            // INI STORE REQUEST KE DATABASE
+        } else {
+            // data valid, store ke db
             $newUser = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -43,20 +43,7 @@ class RegisterAPIController extends Controller
             return response()->json([
                 'status' => 'Register Success'
             ]);
+
         }
-
-
-        // $validated = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email:dns|unique:users',
-        //     'password' => 'required|min:8',
-        // ]);
-        
-        // $newUser = $validated;
-
-        // $newUser['password'] = bcrypt($newUser['password']);
-
-        // User::create($newUser);
     }
-
 }

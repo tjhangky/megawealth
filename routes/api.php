@@ -17,14 +17,8 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-// Route::prefix('v1')->group(function() {
-//     Route::resource('/books', BookController::class)->except([
-//         'create', 'edit'
-//     ]);
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
 // });
 
 Route::post('/register', [RegisterAPIController::class, 'store']);
