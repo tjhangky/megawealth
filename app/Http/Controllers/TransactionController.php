@@ -39,7 +39,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($email)
     {
         if (!Auth::guard('api')->check()) {
             return response()->json([
@@ -47,14 +47,18 @@ class TransactionController extends Controller
                 'error' => 'Email Unauthenticated'
             ], 401);
         }
-        // $id = User::where('email', $email)->get('id');
-        $transactions = Transaction::where('user_id', $id)->get();
-        
-        // kolektion
+        // get user dari email
+        $user = User::where('email', $email)->first();
+
+        // ambil semua transaksi user
+        $transactions = Transaction::where('user_id', $user->id)->get();
+
+        // buat collection baru buat kirim response
         $data = new Collection();
 
         // loop setiap transaksi
         foreach ($transactions as $transaction) {
+            // ambil semua detail transaksi
             $transactiondetails = TransactionDetail::where('transaction_id', $transaction->id)->get();
 
             // loop setiap detail transaksi
@@ -64,7 +68,7 @@ class TransactionController extends Controller
                 $newData = [
                     'transaction_date' => $transaction->created_at->toDateString(),
                     'transaction_id' => $transaction->id,
-                    'id' => $property->id,
+                    'id' => $transactiondetail->property,
                     'type_of_sales' => $property->sale_type,
                     'building_type' => $property->property_type,
                     'price' => $property->price,
@@ -79,7 +83,7 @@ class TransactionController extends Controller
         return response()->json([
             'data' => $data,
             'user_id' => [
-                'id' => $id
+                'id' => $user->id
             ]
         ]);
     }
