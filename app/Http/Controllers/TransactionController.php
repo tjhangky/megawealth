@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Property;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
 
 class TransactionController extends Controller
@@ -37,8 +39,15 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($email)
     {
+        if (!Auth::guard('api')->check()) {
+            return response()->json([
+                'status' => 'false',
+                'error' => 'Email Unauthenticated'
+            ], 401);
+        }
+        $id = User::where('email', $email)->get('id');
         $transactions = Transaction::where('user_id', $id)->get();
         
         // kolektion

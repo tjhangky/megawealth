@@ -17,10 +17,11 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::post('/register', [RegisterAPIController::class, 'store']);
 Route::post('/login', [LoginAPIController::class, 'authenticate']);
-Route::middleware('auth:api')->get('/transaction/{id}', [TransactionController::class, 'show']);
+Route::get('/transaction/{id}', [TransactionController::class, 'show']);
+// Route::middleware('auth:api')->get('/transaction/{id}', [TransactionController::class, 'show']);
