@@ -39,7 +39,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($email)
+    public function show($id)
     {
         if (!Auth::guard('api')->check()) {
             return response()->json([
@@ -47,7 +47,7 @@ class TransactionController extends Controller
                 'error' => 'Email Unauthenticated'
             ], 401);
         }
-        $id = User::where('email', $email)->get('id');
+        // $id = User::where('email', $email)->get('id');
         $transactions = Transaction::where('user_id', $id)->get();
         
         // kolektion
