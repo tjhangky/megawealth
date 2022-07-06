@@ -26,7 +26,7 @@ class Property extends Model
         return $this->hasMany(Cart::class);
     }
     
-    public function transactionDetail() {
-        return $this->belongsTo(TransactionDetail::class);
+    public function transaction_detail() {
+        return $this->belongsTo(TransactionDetail::class, 'transaction_detail_id');
     }
 }
