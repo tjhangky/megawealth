@@ -31,7 +31,7 @@ class RegisterAPIController extends Controller
             ], 422);
 
         } else {
-            // data valid, store ke db
+            // data valid, buat object user
             $newUser = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -42,7 +42,7 @@ class RegisterAPIController extends Controller
             
             return response()->json([
                 'status' => 'Register Success'
-            ]);
+            ], 200);
 
         }
     }
