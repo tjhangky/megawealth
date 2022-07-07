@@ -15,19 +15,19 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $validated = $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required|min:8',
         ]);
 
-        // generate cookie
+        // generate cookie kalo remember me
         if($request->remember) {
             Cookie::queue('loginCookie', $request->input('email'), 5);
-            }
+        }
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        if (Auth::attempt($validated, $request->remember)) {
+            // jika berhasil login
             $request->session()->regenerate();
-
             return redirect()->intended('/');
         }
 

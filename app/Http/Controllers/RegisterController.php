@@ -8,11 +8,13 @@ use Illuminate\Http\Request ;
 
 class RegisterController extends Controller
 {
-    public function index() {
+    public function index() 
+    {
         return view('register.index');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // validasi
         $validated = $request->validate([
             'name' => 'required',
