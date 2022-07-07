@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Property;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
 
 class ManagePropertyController extends Controller
 {
@@ -127,7 +129,23 @@ class ManagePropertyController extends Controller
 
     public function finish(Property $property)
     {
+        // ambil cart pertama yg punya properti tsb
+        $cart = Cart::where('property_id', $property->id)->first();
 
+        // buat transaksi baru
+        $newTransaction = [
+            'user_id' => $cart->user_id
+        ];
+
+        $transaction = Transaction::create($newTransaction);
+
+        // buat detail transaksi
+        $transactionDetail = [
+            'transaction_id' => $transaction->id,
+            'property_id' => $property->id,
+        ];
+
+        TransactionDetail::create($transactionDetail);
 
         
         // ubah status jd transaction completed
