@@ -3,5 +3,5 @@
 @section('title', 'Buy')
 
 @section('info')
-    <p>Showing Real Estates For Sale</p>
+    <p class="fw-bold">Showing Real Estates For Sale</p>
 @endsection

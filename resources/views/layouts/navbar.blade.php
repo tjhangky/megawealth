@@ -48,10 +48,13 @@
                         <a class="nav-item nav-link" href="/manage-property">Manage Real Estate</a>
                     @endcan
 
-                    <form action="/logout" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-warning btn-sm">Logout</button>
-                    </form>
+                    <div class="d-flex align-items-center ms-3">
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-warning btn-sm">Logout</button>
+                        </form>
+                    </div>
+
                 @endauth
             </div>
         </div>

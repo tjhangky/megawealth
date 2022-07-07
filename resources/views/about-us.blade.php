@@ -18,7 +18,7 @@
     </div>
 
     <div class="container mt-3">
-        <h4>Our Offices</h4>
+        <h4 class="fw-bold">Our Offices</h4>
         <div class="row mt-3">
             @foreach ($offices as $office)
                 <div class="col">

@@ -19,12 +19,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
 
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body style="font-family: 'Noto Sans'; font-size: 16px;">
+<body style="font-family: 'Open Sans', sans-serif; font-size: 16px;">
     @include('layouts.navbar')
 
     @yield('content')

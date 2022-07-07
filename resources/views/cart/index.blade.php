@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <h4>Your Cart</h4>
+        <h5 class="fw-bold mb-2">Your Cart</h5>
 
         @if ($carts->isEmpty())
             {{-- validasi kosong --}}
@@ -34,9 +34,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">
                                     @if ($cart->property->sale_type == 'Rent')
-                                        ${{ $cart->property->price }} / month
+                                        ${{ number_format($cart->property->price, 0, '.', ',') }} / month
                                     @else
-                                        ${{ $cart->property->price }}
+                                        ${{ number_format($cart->property->price, 0, '.', ',') }}
                                     @endif
                                 </h5>
 
