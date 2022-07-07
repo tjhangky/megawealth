@@ -15,14 +15,11 @@ class TransactionDetail extends Model
     protected $fillable = ['transaction_id', 'property_id'];
 
     public function property() {
-        return $this->hasOne(Property::class, 'property_id');
+        return $this->belongsTo(Property::class, 'property_id');
     }
 
     public function transaction() {
         return $this->belongsTo(Transaction::class, 'transaction_id');
     }
 
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }
