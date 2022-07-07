@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <a href="/manage-company/create" class="btn btn-primary mb-5">+ Add Office</a>
+        <a href="/manage-company/create" class="btn btn-dark mb-5">+ Add Office</a>
 
         <div class="row">
             @foreach ($offices as $office)
@@ -27,7 +27,7 @@
                             <p class="card-text">{{ $office->contact_name }} : {{ $office->contact_phone }}</p>
 
                             <div class="d-flex justify-content-evenly">
-                                <a href="/manage-company/{{ $office->id }}/edit" class="btn btn-primary">Update</a>
+                                <a href="/manage-company/{{ $office->id }}/edit" class="btn btn-dark">Update</a>
 
                                 <form action="/manage-company/{{ $office->id }}" method="POST">
                                     @csrf

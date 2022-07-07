@@ -65,7 +65,7 @@
                 <form action="/cart/checkout/{{ $carts->first()->user->id }}" method="POST">
                     @method('delete')
                     @csrf
-                    <button type="submit" class="btn btn-primary"
+                    <button type="submit" class="btn btn-dark"
                         onclick="return confirm('Are you sure you want to checkout?')">Checkout</button>
                 </form>
             </div>

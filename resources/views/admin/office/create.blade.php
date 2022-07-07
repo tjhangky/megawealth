@@ -25,8 +25,8 @@
 
                 <div class="form-group">
                     <label for="contact_name">Contact Name</label>
-                    <input type="text" class="form-control @error('contact_name') is-invalid @enderror" name="contact_name"
-                        value="{{ old('contact_name') }}">
+                    <input type="text" class="form-control @error('contact_name') is-invalid @enderror"
+                        name="contact_name" value="{{ old('contact_name') }}">
                     @error('contact_name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -43,13 +43,14 @@
 
                 <div class="form-group">
                     <label for="image">Upload Image</label>
-                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
+                        name="image">
                     @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-3">Insert</button>
+                <button type="submit" class="btn btn-dark mt-3">Insert</button>
             </form>
         </div>
 

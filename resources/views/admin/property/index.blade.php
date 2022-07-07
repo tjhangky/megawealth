@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-around">
-                                    <a href="/manage-property/{{ $property->id }}/edit" class="btn btn-primary">Update</a>
+                                    <a href="/manage-property/{{ $property->id }}/edit" class="btn btn-dark">Update</a>
 
                                     <form action="/manage-property/{{ $property->id }}" method="POST">
                                         @csrf

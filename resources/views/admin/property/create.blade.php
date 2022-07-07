@@ -58,7 +58,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-3">Insert</button>
+                        <button type="submit" class="btn btn-dark mt-3">Insert</button>
                     </form>
                 </div>
             </div>

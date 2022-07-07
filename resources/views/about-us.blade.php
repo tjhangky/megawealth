@@ -19,23 +19,26 @@
 
     <div class="container mt-3">
         <h4>Our Offices</h4>
-        <div class="d-flex mt-3">
+        <div class="row mt-3">
             @foreach ($offices as $office)
-                <div class="card mx-1" style="width: 18rem;">
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
 
-                    <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
-
-                    <div class="card-body">
-                        <p class="card-title">{{ $office->name }}</p>
-                        <p class="card-text ">{{ $office->address }}</p>
-                        <p class="card-text">{{ $office->contact_name }} : {{ $office->contact_phone }}</p>
+                        <div class="card-body">
+                            <p class="card-title">{{ $office->name }}</p>
+                            <p class="card-text">{{ $office->address }}</p>
+                            <p class="card-text mb-0">{{ $office->contact_name }} : </p>
+                            <p class="card-text">{{ $office->contact_phone }}</p>
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
+    </div>
 
-        <div class="d-flex justify-content-center mt-5">
-            {{ $offices->links() }}
-        </div>
+    <div class="d-flex justify-content-center mt-5">
+        {{ $offices->links() }}
+    </div>
     </div>
 @endsection
