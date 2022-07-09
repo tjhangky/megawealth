@@ -63,17 +63,17 @@ class TransactionController extends Controller
 
             // loop setiap detail transaksi
             foreach ($transactiondetails as $transactiondetail) {
-                // ambil objek property
-                $property = Property::find($transactiondetail->property_id);
+                
+                // buat detail transaksi
                 $newData = [
                     'transaction_date' => $transaction->created_at->toDateString(),
                     'transaction_id' => $transaction->id,
-                    'id' => $transactiondetail->property,
-                    'type_of_sales' => $property->sale_type,
-                    'building_type' => $property->property_type,
-                    'price' => $property->price,
-                    'location' => $property->address,
-                    'image_path' => $property->image
+                    'id' => $transactiondetail->property->id,
+                    'type_of_sales' => $transactiondetail->property->sale_type,
+                    'building_type' => $transactiondetail->property->property_type,
+                    'price' => $transactiondetail->property->price,
+                    'location' => $transactiondetail->property->address,
+                    'image_path' => $transactiondetail->property->image
                 ];
                 $data->push($newData);
             }
