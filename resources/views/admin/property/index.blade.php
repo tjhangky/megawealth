@@ -44,12 +44,15 @@
                                 <div class="d-flex justify-content-around">
                                     <a href="/manage-property/{{ $property->id }}/edit" class="btn btn-dark">Update</a>
 
-                                    <form action="/manage-property/{{ $property->id }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure want to delete {{ $property->name }} ?')">Delete</button>
-                                    </form>
+                                    @if ($property->status == 'Open')
+                                        <form action="/manage-property/{{ $property->id }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure want to delete {{ $property->name }} ?')">Delete</button>
+                                        </form>
+                                    @endif
+
 
                                     {{-- cek status property yg cart --}}
                                     @if ($property->status == 'Cart')
