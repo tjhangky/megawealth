@@ -16,7 +16,7 @@ class CreateTransactionDetailsTable extends Migration
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('transaction_id')->constrained('transactions');
-            $table->foreignUuid('property_id')->constrained('properties')->onDelete('no action');
+            $table->foreignUuid('property_id')->constrained('properties');
             $table->timestamps();
         });
     }
