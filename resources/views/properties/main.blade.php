@@ -19,7 +19,7 @@
             <div class="row">
                 @foreach ($properties as $property)
                     <div class="col-md-3">
-                        <div class="card">
+                        <div class="card popup">
 
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
 

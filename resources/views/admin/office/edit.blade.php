@@ -51,7 +51,8 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-dark">Update</button>
+                            <button type="submit" class="btn btn-dark"
+                                onclick="return confirm('Are you sure want to update this office?')">Update</button>
                         </form>
                     </div>
                 </div>

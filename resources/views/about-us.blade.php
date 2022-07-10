@@ -22,7 +22,7 @@
         <div class="row mt-3">
             @foreach ($offices as $office)
                 <div class="col">
-                    <div class="card">
+                    <div class="card popup">
                         <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
 
                         <div class="card-body">

@@ -15,21 +15,21 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center mb-3">Login</h3>
+                        <h3 class="text-center mb-3 fw-bold">Login</h3>
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="email" class="form-label">Email address</label>
+                                <label for="email" class="form-label fw-bold">Email address</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                     name="email" placeholder="Enter Your Email"
-                                    value={{ Cookie::get('loginCookie') !== null ? Cookie::get('loginCookie') : '' }}>
+                                    value="{{ Cookie::get('loginCookie') !== null ? Cookie::get('loginCookie') : '' }}">
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label fw-bold">Password</label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" placeholder="Your password must be at least 8 characters">
                                 @error('password')
@@ -44,7 +44,9 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-dark">Login</button>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-dark">Login</button>
+                            </div>
                         </form>
                     </div>
                 </div>

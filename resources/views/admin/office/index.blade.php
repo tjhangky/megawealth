@@ -17,7 +17,7 @@
         <div class="row">
             @foreach ($offices as $office)
                 <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card popup">
 
                         <img src="{{ asset('storage/' . $office->image) }}" class="card-img-top">
 
@@ -27,7 +27,7 @@
                             <p class="card-text">{{ $office->contact_name }} : {{ $office->contact_phone }}</p>
 
                             <div class="d-flex justify-content-evenly">
-                                <a href="/manage-company/{{ $office->id }}/edit" class="btn btn-dark">Update</a>
+                                <a href="/manage-company/{{ $office->id }}/edit" class="btn btn-primary">Update</a>
 
                                 <form action="/manage-company/{{ $office->id }}" method="POST">
                                     @csrf

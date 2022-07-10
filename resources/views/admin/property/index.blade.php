@@ -23,7 +23,7 @@
             <div class="row">
                 @foreach ($properties as $property)
                     <div class="col-md-3">
-                        <div class="card">
+                        <div class="card popup">
 
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
 
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-around">
-                                    <a href="/manage-property/{{ $property->id }}/edit" class="btn btn-dark">Update</a>
+                                    <a href="/manage-property/{{ $property->id }}/edit" class="btn btn-primary">Update</a>
 
                                     @if ($property->status == 'Open')
                                         <form action="/manage-property/{{ $property->id }}" method="POST">
@@ -60,7 +60,7 @@
                                             @csrf
                                             @method('put')
                                             <button type="submit" class="btn btn-success"
-                                                onclick="return confirm('Are you sure want to finish {{ $property->name }} transaction ?')">Finish</button>
+                                                onclick="return confirm('Are you sure want to finish this transaction ?')">Finish</button>
                                         </form>
                                     @endif
                                 </div>
