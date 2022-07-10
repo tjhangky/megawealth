@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid py-5"
-        style="background-image: url('{{ asset('storage/misc-images/about_banner.jpg') }}'); background-size: cover; background-position: center; margin-top: -4em">
+        style="background-image: url('{{ asset('storage/misc-images/about_banner.jpg') }}'); background-size: cover; background-position: center;">
         <h1 class="text-center my-5 fw-bold text-light">About Our Company</h1>
         <div class="container my-5">
             <p class="text-light">Our company was founded at 2008 by our founder Renanda. At that time, we started as law

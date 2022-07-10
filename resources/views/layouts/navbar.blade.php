@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between sticky-top mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between sticky-top">
     <div class="container">
         <a class="navbar-brand" href="/" style="font-family: 'Yellowtail'">megAWealth</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"

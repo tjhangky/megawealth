@@ -3,7 +3,7 @@
 @section('title', 'Manage Property')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
 
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container-fluid py-5"
-        style="background-image: url('{{ asset('storage/misc-images/home_banner.jpg') }}'); background-size: cover; background-position: bottom; margin-top: -4em">
+        style="background-image: url('{{ asset('storage/misc-images/home_banner.jpg') }}'); background-size: cover; background-position: bottom;">
 
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -15,7 +15,9 @@
         @endif
 
         <div class="container py-5">
-            <h1 class="text-center fw-bold my-5">Find Your Future Home</h1>
+            <h1 class="text-center fw-bold my-5 display-4" style="font-family: 'Shadows Into Light'">Find Your
+                Future Home
+            </h1>
 
             {{-- kalo admin dia ke manage property, kalo ngga ke view property --}}
             <form action="{{ Gate::allows('admin') ? '/manage-property' : '/properties' }}">

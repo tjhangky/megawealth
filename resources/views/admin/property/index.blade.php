@@ -3,7 +3,7 @@
 @section('title', 'Manage Property')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
 
         @if ($properties->isEmpty())
             <div class="d-flex justify-content-center">
@@ -16,6 +16,13 @@
                     {{ session('status') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+            @endif
+
+            {{-- info --}}
+            @if (request('search') == '')
+                <p>Showing All Properties</p>
+            @else
+                <p>Showing Search Results for "{{ request('search') }}"</p>
             @endif
 
             <a href="/manage-property/create" class="btn btn-dark mb-5">+ Add Property</a>

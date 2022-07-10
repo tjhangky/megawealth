@@ -4,9 +4,16 @@
     width: 100%;
 }
 
+.card-login {
+    box-shadow: 0 3px 20px rgb(30, 30, 30);
+    padding: 20px;
+    background-color: rgb(36, 36, 36);
+    color: rgb(227, 227, 227);
+}
+
 .popup:hover {
-    transform: scale(1.03);
-    box-shadow: 0 3px 3px rgb(152, 152, 152);
+    transform: scale(1.05);
+    box-shadow: 0 3px 5px rgb(60, 60, 60);
 }
 
 .card-title {
@@ -25,4 +32,17 @@
 
 .card-img-top {
     height: 200px;
+}
+
+.login-banner {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.blur {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    height: 100%;
+    width: 100%;
 }

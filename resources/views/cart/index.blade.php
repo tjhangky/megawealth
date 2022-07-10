@@ -3,7 +3,7 @@
 @section('title', 'Cart')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         {{-- status u/ added to cart and delete from cart --}}
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
