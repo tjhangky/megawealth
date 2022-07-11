@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginAPIController;
@@ -17,11 +18,14 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(ApiController::class)
+    ->group(function () {
+        Route::post('/register', 'register');
+        Route::post('/login', 'login');
+        Route::get('/transaction/{id}', 'transaction');
 });
 
-Route::post('/register', [RegisterAPIController::class, 'store']);
-Route::post('/login', [LoginAPIController::class, 'authenticate']);
-Route::get('/transaction/{id}', [TransactionController::class, 'show']);
+// Route::post('/register', [RegisterAPIController::class, 'store']);
+// Route::post('/login', [LoginAPIController::class, 'authenticate']);
+// Route::get('/transaction/{id}', [TransactionController::class, 'show']);
 // Route::middleware('auth:api')->get('/transaction/{id}', [TransactionController::class, 'show']);
