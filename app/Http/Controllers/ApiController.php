@@ -8,25 +8,16 @@ use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
     public function register(Request $request) {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8',
         ]);
 
-        if($validator->fails()) {
-            // data ga valid
-            return response()->json([
-                'message' => 'The given data was invalid',
-                'errors' => $validator->errors()
-            ], 422);
-
-        } 
         // data valid, buat object user
         $newUser = [
             'name' => $request->name,
@@ -38,32 +29,18 @@ class ApiController extends Controller
         
         return response()->json([
             'status' => 'Register Success'
-        ], 200);
+        ]);
 
     }
 
     public function login(Request $request) {
-        $validator = Validator::make($request->all(), [
+
+        $validated = $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required|min:8',
         ]);
 
-        // invalid data type
-        if($validator->fails()) {
-            return response()->json([
-                'message' => 'The given data was invalid',
-                'errors' => $validator->errors()
-            ]);
-        }
-
-        // buat object user
-        $user = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-
-
-        if (!Auth::attempt($user)) {
+        if (!Auth::attempt($validated)) {
             // gagal login
             return response()->json([
                 'status' => 'Login Failed',
@@ -72,16 +49,11 @@ class ApiController extends Controller
         }
 
         // berhasil login
-        $token = auth()->user()->createToken('Bearer Token')->accessToken;
-
-        // method createToken diatas ada cacing merah undefined tetapi masih bisa dijalankan
-        // semisal code diatas gagal, bisa menggunakan 2 baris code dibawah
-        // $user = User::where('email', $request->email)->first();
-        // $token = $user->createToken('BearerToken')->accessToken;
+        $token = $request->user()->createToken('Bearer Token')->accessToken;
 
         return response()->json([
             'status' => 'Login Successful',
-            'Token' => $token
+            'token' => $token
         ]);    
     }
 
