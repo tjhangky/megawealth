@@ -103,7 +103,6 @@ class ManagePropertyController extends Controller
 
         // store image ke storage
         if($request->file('image')) {
-            dd($validated['image']);
             $validated['image'] = $request->file('image')->store('property-images');
         }
         
