@@ -17,7 +17,11 @@
         @if ($carts->isEmpty())
             {{-- validasi kosong --}}
             <div class="d-flex justify-content-center">
-                No data in cart yet
+                <p>
+                    No property in cart yet.
+                    <a href="/properties/"> Browse</a>
+                </p>
+
             </div>
         @else
             <div class="row">

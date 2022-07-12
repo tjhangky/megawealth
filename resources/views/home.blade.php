@@ -30,32 +30,37 @@
         </div>
     </div>
 
+
     {{-- ICONS --}}
-    <div class="container my-4">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-md-4">
                 <a href="{{ Gate::allows('admin') ? '/manage-property?search=buy' : 'properties/buy' }}/"
                     class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 150px; height: 150px">
-                        <h5>Buy</h5>
+                        <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 150px; height: 150px"
+                            class="home-icon">
+                        <h6 class="fw-bold mt-3">Buy</h6>
                     </div>
                 </a>
 
             </div>
             <div class="col-md-4">
-                <a href="/properties/rent" class="text-decoration-none text-dark">
+                <a href="{{ Gate::allows('admin') ? '/manage-property?search=rent' : 'properties/rent' }}/"
+                    class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 150px; height: 150px">
-                        <h5>Rent</h5>
+                        <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 150px; height: 150px"
+                            class="home-icon">
+                        <h6 class="fw-bold mt-3">Rent</h5>
                     </div>
                 </a>
             </div>
             <div class="col-md-4">
                 <a href="/about-us" class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 150px; height: 150px">
-                        <h5>About Us</h5>
+                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 150px; height: 150px"
+                            class="home-icon">
+                        <h6 class="fw-bold mt-3">About Us</h6>
                     </div>
                 </a>
             </div>

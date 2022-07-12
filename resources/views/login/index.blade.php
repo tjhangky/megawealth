@@ -5,19 +5,19 @@
 @section('content')
     <div class="login-banner" style="background-image: url('{{ asset('storage/misc-images/login_banner.jpg') }}')">
         <div class="blur">
-            <div class="container">
-                {{-- status message u/ logged out --}}
-                @if (session()->has('status'))
-                    <div class="alert alert-danger">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
+            <div class="container pt-5">
                 <div class="d-flex justify-content-center">
                     <div class="col-md-5">
-                        <div class="card card-login" style="margin-top: 15vh">
+                        <div class="card card-login" style="margin-top: 10vh">
                             <div class="card-body">
                                 <h1 class="text-center mb-3" style="font-family: 'Yellowtail'">megAWealth</h1>
+
+                                @if (session()->has('status'))
+                                    <div class="alert alert-danger">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+
                                 <form action="/login" method="POST">
                                     @csrf
                                     <div class="form-group mb-3">
