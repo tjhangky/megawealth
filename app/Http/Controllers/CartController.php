@@ -7,7 +7,6 @@ use App\Models\Property;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
-use App\Http\Controllers\PropertyController;
 
 class CartController extends Controller
 {
@@ -63,10 +62,6 @@ class CartController extends Controller
         // ganti property status to 'Open' kalo gaada di cart siapapun
         $property_exist = Cart::where('property_id', $property_id)->exists();
         if (!$property_exist) {
-            // $status = 'Open';
-            // $property_controller = new PropertyController;
-            // $property_controller->update($status, $property_id);
-
             Property::find($property_id)->update(['status' => 'Open']);
         }
 
@@ -88,20 +83,15 @@ class CartController extends Controller
                 'transaction_id' => $transaction->id,
                 'property_id' => $cart->property->id
             ];
-
             TransactionDetail::create($transactiondetail);
-        }
 
-        // ubah status properti jadi complete + delete semua cart yg ada properti yg di checkout
-        $carts = Cart::where('user_id', $id)->get();
-        foreach($carts as $cart) {
+            // ubah status properti jadi complete + delete semua cart yg ada properti yg di checkout
             $property = Property::find($cart->property_id);
             $property->update(['status' => 'Transaction Completed']);
+            // delete cart user yang checkout
             Cart::where('property_id', $cart->property_id)->delete();
         }
 
-        // delete cart user yang checkout
-        // Cart::where('user_id', $id)->delete();
         return redirect('/')->with('status', 'Checkout Successful!');
     }
 }
