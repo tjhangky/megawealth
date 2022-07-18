@@ -67,6 +67,14 @@ class ApiController extends Controller
         // get user dari email
         $user = User::where('email', $email)->first();
 
+        // validasi email gaada
+        if (!$user) {
+            return response()->json([
+                'status' => 'false',
+                'error' => 'User Not Found'
+            ], 404);
+        }
+
         // ambil semua transaksi user
         $transactions = Transaction::where('user_id', $user->id)->get();
 
