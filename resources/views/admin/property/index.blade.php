@@ -36,11 +36,13 @@
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top">
 
                             <div class="card-body">
-                                @if ($property->sale_type == 'Rent')
-                                    <h5 class="card-title">${{ $property->price }} / month</h5>
-                                @else
-                                    <h5 class="card-title">${{ $property->price }}</h5>
-                                @endif
+                                <h5 class="card-title">
+                                    @if ($property->sale_type == 'Rent')
+                                        ${{ number_format($property->price, 0, '.', ',') }} / month
+                                    @else
+                                        ${{ number_format($property->price, 0, '.', ',') }}
+                                    @endif
+                                </h5>
 
                                 <p class="card-text">{{ $property->address }}</p>
                                 <div class="d-flex mb-3">

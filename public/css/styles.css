@@ -1,8 +1,10 @@
-.home-icon:hover {
-    transition: 0.1s ease-in-out;
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
 }
 
 .home-icon:hover {
+    transition: 0.1s ease-in-out;
     transform: scale(1.1);
 }
 
@@ -24,12 +26,12 @@
 
 .popup:hover {
     transform: scale(1.03);
-    box-shadow: 0 3px 15px rgb(106, 106, 106);
+    box-shadow: 0 3px 10px rgb(129, 129, 129);
 }
 
 .card-title {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 .card-text {

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body style="font-family: 'Open Sans', sans-serif; font-size: 16px;">
+<body>
     @include('layouts.navbar')
 
     @yield('content')

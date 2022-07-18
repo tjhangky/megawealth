@@ -31,6 +31,9 @@
                                 <option value="House" {{ old('property_type') == 'House' ? 'selected' : '' }}>House
                                 </option>
                             </select>
+                            @error('property_type')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-group mb-3">

@@ -22,7 +22,6 @@
                                     <option value="Rent" {{ $property->sale_type == 'Rent' ? 'selected' : '' }}>Rent
                                     </option>
                                 </select>
-
                                 @error('sale_type')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -40,6 +39,9 @@
                                         House
                                     </option>
                                 </select>
+                                @error('property_type')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group mb-3">
