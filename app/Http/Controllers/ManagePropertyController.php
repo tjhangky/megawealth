@@ -29,7 +29,7 @@ class ManagePropertyController extends Controller
                 ->orWhere('sale_type', 'like', '%' . $search . '%')
                 ->paginate(4);
         } else {
-                $properties = Property::latest()->paginate(4)->withQueryString();
+                $properties = Property::latest()->paginate(4);
         }
         
         return view('admin.property.index', compact('properties'));
@@ -80,7 +80,7 @@ class ManagePropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Property $property)
-    {
+    {   
         return view('admin.property.edit', compact('property'));
     }
 
@@ -95,7 +95,7 @@ class ManagePropertyController extends Controller
     {
         $validated = $request->validate([
             'sale_type' => 'required|in:Sale,Rent',
-            'property_type' => 'required|in:House,Apartment', # nanti diganti pake tabel
+            'property_type' => 'required|in:House,Apartment',
             'price' => 'required',
             'address' => 'required',
             'image' => 'image|max:10240|mimes:jpeg,jpg,png'
@@ -120,6 +120,11 @@ class ManagePropertyController extends Controller
      */
     public function destroy(Property $property)
     {
+        // validasi kalo properti udah didelete
+        if ($property->status == 'Transaction Completed') {
+            return redirect('/manage-property')->with('status', 'Cannot delete property because it is already sold');
+        }
+
         $property->delete();
 
         return redirect()->back()->with('status', 'Property deleted successfully');
