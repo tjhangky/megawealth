@@ -31,8 +31,8 @@ class PropertyController extends Controller
             // kalo search kosongan
             $properties = Property::whereIn('status', ['Open', 'Cart'])->paginate(4);
         }
-    
-        return view('properties.index', compact('properties'));
+        $active = 'property';
+        return view('properties.index', compact('properties', 'active'));
     }
 
     public function buy() 
@@ -43,7 +43,9 @@ class PropertyController extends Controller
         }
 
         $properties = Property::where('sale_type', 'sale')->whereIn('status', ['Open', 'Cart'])->paginate(4);
-        return view('properties.buy', compact('properties'));
+
+        $active = 'buy';
+        return view('properties.buy', compact('properties', 'active'));
     }
 
     public function rent() 
@@ -54,7 +56,9 @@ class PropertyController extends Controller
         }
         
         $properties = Property::where('sale_type', 'rent')->whereIn('status', ['Open', 'Cart'])->paginate(4);
-        return view('properties.rent', compact('properties'));
+
+        $active = 'rent';
+        return view('properties.rent', compact('properties', 'active'));
     }
     
 }

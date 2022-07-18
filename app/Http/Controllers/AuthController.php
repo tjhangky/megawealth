@@ -13,7 +13,7 @@ class AuthController extends Controller
     // Register
     public function index_register() 
     {
-        return view('register.index');
+        return view('register.index', ['active' => 'register']);
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class AuthController extends Controller
     // Login
     public function index_login()
     {
-        return view('login.index');
+        return view('login.index', ['active' => 'login']);
     }
 
     public function authenticate(Request $request)

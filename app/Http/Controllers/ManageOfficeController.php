@@ -15,7 +15,9 @@ class ManageOfficeController extends Controller
     public function index()
     {
         $offices = Office::paginate(4);
-        return view('admin.office.index', compact('offices'));
+
+        $active = 'manage-company';
+        return view('admin.office.index', compact('offices', 'active'));
     }
 
     /**
@@ -25,7 +27,9 @@ class ManageOfficeController extends Controller
      */
     public function create()
     {
-        return view('admin.office.create');
+
+        $active = 'manage-company';
+        return view('admin.office.create', compact('active'));
     }
 
     /**
@@ -62,7 +66,8 @@ class ManageOfficeController extends Controller
      */
     public function edit(Office $office)
     {   
-        return view('admin.office.edit', compact('office'));
+        $active = 'manage-company';
+        return view('admin.office.edit', compact('office', 'active'));
     }
 
     /**

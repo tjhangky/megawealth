@@ -24,28 +24,31 @@
                     <span class="nav-link text-warning">ADMIN</span>
                 @endcan
 
-                <a class="nav-item nav-link" href="/">Home</span></a>
+                <a class="nav-item nav-link {{ $active == 'home' ? 'active' : '' }}" href="/">Home</span></a>
 
                 @cannot('admin')
-                    <a class="nav-item nav-link" href="/about-us">About Us</a>
-                    <a class="nav-item nav-link" href="/properties/buy">Buy</a>
-                    <a class="nav-item nav-link" href="/properties/rent">Rent</a>
+                    <a class="nav-item nav-link {{ $active == 'about-us' ? 'active' : '' }}" href="/about-us">About Us</a>
+                    <a class="nav-item nav-link {{ $active == 'buy' ? 'active' : '' }}" href="/properties/buy">Buy</a>
+                    <a class="nav-item nav-link {{ $active == 'rent' ? 'active' : '' }}" href="/properties/rent">Rent</a>
                 @endcannot
 
                 @guest
-                    <a class="nav-item nav-link" href="/login">Login</a>
-                    <a class="nav-item nav-link" href="/register">Register</a>
+                    <a class="nav-item nav-link {{ $active == 'login' ? 'active' : '' }}" href="/login">Login</a>
+                    <a class="nav-item nav-link {{ $active == 'register' ? 'active' : '' }}" href="/register">Register</a>
                 @endguest
 
                 @auth
                     @cannot('admin')
-                        <a class="nav-item nav-link" href="/cart">Cart</a>
+                        <a class="nav-item nav-link {{ $active == 'cart' ? 'active' : '' }}" href="/cart">Cart</a>
                     @endcannot
 
                     {{-- for admin --}}
                     @can('admin')
-                        <a class="nav-item nav-link" href="/manage-company">Manage Company</a>
-                        <a class="nav-item nav-link" href="/manage-property">Manage Real Estate</a>
+                        <a class="nav-item nav-link {{ $active == 'manage-company' ? 'active' : '' }}"
+                            href="/manage-company">Manage Company</a>
+                        <a class="nav-item nav-link {{ $active == 'manage-property' ? 'active' : '' }}"
+                            href="/manage-property">Manage
+                            Real Estate</a>
                     @endcan
 
                     <div class="d-flex align-items-center ms-3">

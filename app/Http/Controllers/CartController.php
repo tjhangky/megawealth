@@ -18,7 +18,9 @@ class CartController extends Controller
     public function index()
     {
         $carts = Cart::where('user_id', auth()->user()->id)->latest()->paginate(4);
-        return view('cart.index', compact('carts'));
+
+        $active = 'cart';
+        return view('cart.index', compact('carts', 'active'));
     }
 
     /**

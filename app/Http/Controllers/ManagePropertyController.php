@@ -32,7 +32,8 @@ class ManagePropertyController extends Controller
                 $properties = Property::latest()->paginate(4);
         }
         
-        return view('admin.property.index', compact('properties'));
+        $active = 'manage-property';
+        return view('admin.property.index', compact('properties', 'active'));
     }
 
     /**
@@ -42,7 +43,8 @@ class ManagePropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.property.create');
+        $active = 'manage-property';
+        return view('admin.property.create', compact('active'));
     }
 
     /**
@@ -81,7 +83,8 @@ class ManagePropertyController extends Controller
      */
     public function edit(Property $property)
     {   
-        return view('admin.property.edit', compact('property'));
+        $active = 'manage-property';
+        return view('admin.property.edit', compact('property', 'active'));
     }
 
     /**
