@@ -21,7 +21,7 @@ use App\Http\Controllers\ManagePropertyController;
 |
 */
 
-// AUTHENTICATION
+// Auth
 Route::middleware('guest')
     ->controller(AuthController::class)
     ->group(function() {
@@ -33,7 +33,7 @@ Route::middleware('guest')
 Route::post('/logout', [AuthController::class, 'logout']);
 
 
-// GUEST & MEMBER
+// Home, About, Properties
 Route::get('/', function () {
     return view('home');
 });
@@ -47,7 +47,7 @@ Route::prefix('properties')
         Route::get('/rent', [PropertyController::class, 'rent']);
 });
 
-// MEMBER
+// Cart
 Route::middleware('member')
     ->prefix('cart')
     ->group(function() {
@@ -58,7 +58,6 @@ Route::middleware('member')
 });
 
 
-// ADMIN
 // manage company
 Route::middleware('admin')
     ->prefix('manage-company')
