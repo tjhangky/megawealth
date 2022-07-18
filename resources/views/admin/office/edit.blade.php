@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mt-5 ">
+    <div class="container mt-5">
+        <h3 class="text-center fw-bold">Edit Office</h3>
         <div class="row">
-
             <div class="col-md-6">
                 <img src="{{ asset('storage/' . $office->image) }}" style="width: 100%; height: 400px">
             </div>

@@ -35,7 +35,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ Gate::allows('admin') ? '/manage-property?search=buy' : 'properties/buy' }}/"
+                <a href="{{ Gate::allows('admin') ? '/manage-property?search=buy' : 'properties/buy' }}"
                     class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
                         <img src="{{ asset('storage/misc-images/buy.jpg') }}" style="width: 150px; height: 150px"
@@ -46,7 +46,7 @@
 
             </div>
             <div class="col-md-4">
-                <a href="{{ Gate::allows('admin') ? '/manage-property?search=rent' : 'properties/rent' }}/"
+                <a href="{{ Gate::allows('admin') ? '/manage-property?search=rent' : 'properties/rent' }}"
                     class="text-decoration-none text-dark">
                     <div class="d-flex flex-column align-items-center">
                         <img src="{{ asset('storage/misc-images/rent.jpg') }}" style="width: 150px; height: 150px"

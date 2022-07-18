@@ -11,6 +11,9 @@
     transition: 0.1s ease-in-out;
     width: 100%;
 }
+.card-img-top {
+    height: 200px;
+}
 
 .card-login {
     box-shadow: 0 3px 20px rgb(30, 30, 30);
@@ -20,8 +23,8 @@
 }
 
 .popup:hover {
-    transform: scale(1.05);
-    box-shadow: 0 3px 15px rgb(60, 60, 60);
+    transform: scale(1.03);
+    box-shadow: 0 3px 15px rgb(106, 106, 106);
 }
 
 .card-title {
@@ -36,10 +39,6 @@
 .btn-link {
     color: #8abefe;
     text-decoration: none;
-}
-
-.card-img-top {
-    height: 200px;
 }
 
 .login-banner {

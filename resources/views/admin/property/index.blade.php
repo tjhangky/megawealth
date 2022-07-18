@@ -3,10 +3,11 @@
 @section('title', 'Manage Property')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-4">
 
         @if ($properties->isEmpty())
-            <div class="d-flex justify-content-center">
+            <div class="d-flex
+        justify-content-center">
                 No Properties Found.
             </div>
         @else
@@ -25,7 +26,7 @@
                 <p>Showing Search Results for "{{ request('search') }}"</p>
             @endif
 
-            <a href="/manage-property/create" class="btn btn-dark mb-5">+ Add Property</a>
+            <a href="/manage-property/create" class="btn btn-dark mb-4">+ Add Property</a>
 
             <div class="row">
                 @foreach ($properties as $property)
