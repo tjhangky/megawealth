@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OfficeController;
@@ -23,18 +23,15 @@ use App\Http\Controllers\ManagePropertyController;
 
 // AUTHENTICATION
 Route::middleware('guest')
-    ->controller(RegisterController::class)
+    ->controller(AuthController::class)
     ->group(function() {
-        Route::get('/register', 'index');
+        Route::get('/register', 'index_register');
         Route::post('/register', 'store');
+        Route::get('/login', 'index_login')->name('login');
+        Route::post('/login','authenticate');
 });
+Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::controller(LoginController::class)
-    ->group(function() {
-        Route::get('/login', 'index')->name('login')->middleware('guest');
-        Route::post('/login','authenticate')->middleware('guest');
-        Route::post('/logout', 'logout');
-});
 
 // GUEST & MEMBER
 Route::get('/', function () {
