@@ -1,9 +1,11 @@
 @extends('layouts.main')
 
+@section('title', 'Manage Property')
+
 @section('content')
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-body">
                     <form action="/manage-property" method="POST" enctype="multipart/form-data">
                         @csrf

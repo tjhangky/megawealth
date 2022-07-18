@@ -3,7 +3,6 @@
 @section('content')
     <div class="container mt-5">
         <div class="row">
-
             <div class="col-md-6">
                 <img src="{{ asset('storage/' . $property->image) }}" style="width: 100%; height: 400px">
             </div>
@@ -22,7 +21,6 @@
                                     </option>
                                     <option value="Rent" {{ $property->sale_type == 'Rent' ? 'selected' : '' }}>Rent
                                     </option>
-                                    {{-- SEMENTARA PAKE MANUAL DULU, NANTI SALE RENT DIJADIIN TABLE BARU AJA JD TINGGAL DI LOOP --}}
                                 </select>
 
                                 @error('sale_type')
@@ -41,7 +39,6 @@
                                     <option value="House" {{ $property->property_type == 'House' ? 'selected' : '' }}>
                                         House
                                     </option>
-                                    {{-- SEMENTARA PAKE MANUAL DULU, NANTI SALE RENT DIJADIIN TABLE BARU AJA JD TINGGAL DI LOOP --}}
                                 </select>
                             </div>
 
