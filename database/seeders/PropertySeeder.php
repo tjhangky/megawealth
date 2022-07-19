@@ -14,7 +14,6 @@ class PropertySeeder extends Seeder
      */
     public function run()
     {
-        // Properties
         Property::create([
             'price' => 10000,
             'address' => 'Jl. Sudirman No.10, Jakarta',

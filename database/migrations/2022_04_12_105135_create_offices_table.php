@@ -19,7 +19,7 @@ class CreateOfficesTable extends Migration
             $table->string('address');
             $table->string('contact_name');
             $table->string('contact_phone');
-            $table->string('image'); // ini blm tau
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -37,7 +37,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/', function () {
     return view('home', ['active' => 'home']);
 });
-
 Route::get('/about-us', [OfficeController::class, 'index']);
 
 Route::prefix('properties')
