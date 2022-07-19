@@ -8,7 +8,7 @@
         style="background-image: url('{{ asset('storage/misc-images/home_banner.jpg') }}'); background-size: cover; background-position: bottom;">
 
         @if (session('status'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session('status') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -33,7 +33,7 @@
 
     {{-- ICONS --}}
     <div class="container mt-4">
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <a href="{{ Gate::allows('admin') ? '/manage-property?search=buy' : 'properties/buy' }}"
                     class="text-decoration-none text-dark">
@@ -55,16 +55,20 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-4">
-                <a href="/about-us" class="text-decoration-none text-dark">
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 150px; height: 150px"
-                            class="home-icon">
-                        <h6 class="fw-bold mt-3">About Us</h6>
-                    </div>
-                </a>
-            </div>
+            @cannot('admin')
+                <div class="col-md-4">
+                    <a href="/about-us" class="text-decoration-none text-dark">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="{{ asset('storage/misc-images/about.jpg') }}" style="width: 150px; height: 150px"
+                                class="home-icon">
+                            <h6 class="fw-bold mt-3">About Us</h6>
+                        </div>
+                    </a>
+                </div>
+            @endcannot
+
         </div>
+
     </div>
 
 @endsection

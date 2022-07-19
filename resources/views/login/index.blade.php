@@ -13,7 +13,7 @@
                                 <h1 class="text-center mb-3" style="font-family: 'Yellowtail'">megAWealth</h1>
 
                                 @if (session()->has('status'))
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-warning">
                                         {{ session('status') }}
                                     </div>
                                 @endif
