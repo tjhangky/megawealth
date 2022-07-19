@@ -137,7 +137,7 @@ class ManagePropertyController extends Controller
     public function finish(Property $property)
     {
         // ambil cart pertama yg punya properti tsb
-        $cart = Cart::where('property_id', $property->id)->first();
+        $cart = Cart::orderBy('created_at', 'ASC')->where('property_id', $property->id)->first();
 
         // buat transaksi baru
         $newTransaction = [
