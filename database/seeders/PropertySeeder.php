@@ -15,7 +15,7 @@ class PropertySeeder extends Seeder
     public function run()
     {
         Property::create([
-            'price' => 10000,
+            'price' => 100000,
             'address' => 'Jl. Sudirman No.10, Jakarta',
             'property_type' => 'Apartment',
             'sale_type' => 'Sale',
@@ -24,7 +24,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 15000,
+            'price' => 150000,
             'address' => 'Jl. Haji Agus Salim No.11, Jakarta',
             'property_type' => 'Apartment',
             'sale_type' => 'Sale',
@@ -51,7 +51,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 150000,
+            'price' => 170000,
             'address' => 'Jl. Jakarta Garden City No.25, JGC',
             'property_type' => 'House',
             'sale_type' => 'Sale',
@@ -60,7 +60,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 170000,
+            'price' => 190000,
             'address' => 'Jl. Kuningan No.19, Tangerang',
             'property_type' => 'House',
             'sale_type' => 'Sale',
@@ -69,7 +69,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 2000,
+            'price' => 2200,
             'address' => 'Jl. Jendral No.7, Bandung',
             'property_type' => 'House',
             'sale_type' => 'Rent',
@@ -78,7 +78,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 1500,
+            'price' => 1400,
             'address' => 'Jl. Lubuk Minturun No.18, Padang',
             'property_type' => 'House',
             'sale_type' => 'Rent',
@@ -96,7 +96,7 @@ class PropertySeeder extends Seeder
         ]);
 
         Property::create([
-            'price' => 1500,
+            'price' => 3500,
             'address' => 'Jl. Mangunsakoro No.1, Jakarta',
             'property_type' => 'Apartment',
             'sale_type' => 'Rent',
